@@ -3,18 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lemons Gaming · משחקי חינוך עם נשמה רטרו</title>
-<meta name="description" content="Lemons Gaming — סטודיו ישראלי למשחקי חינוך בדפדפן. קריאה, גיאוגרפיה, פיזיקה, רפלקסים — כל אחד עטוף בקפסולת ארקייד.">
+<title>Lemons Gaming · משחקים ללמידה ולכיף</title>
+<meta name="description" content="Lemons Gaming — אוסף משחקי דפדפן ללמידה ולכיף. קריאה, גיאוגרפיה, פיזיקה, רפלקסים, אסטרטגיה ועוד.">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://lemons-gaming.github.io/">
-<meta property="og:title" content="Lemons Gaming">
-<meta property="og:description" content="סטודיו ישראלי למשחקי חינוך עם נשמה רטרו. שחקו עכשיו.">
+<meta property="og:title" content="Lemons Gaming · משחקים ללמידה ולכיף">
+<meta property="og:description" content="אוסף משחקי דפדפן ללמידה ולכיף. שחקו עכשיו.">
 <meta property="og:image" content="https://lemons-gaming.github.io/assets/logo.jpg">
 <meta property="og:locale" content="he_IL">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Lemons Gaming">
-<meta name="twitter:description" content="סטודיו ישראלי למשחקי חינוך עם נשמה רטרו.">
+<meta name="twitter:description" content="משחקים ללמידה ולכיף.">
 <meta name="twitter:image" content="https://lemons-gaming.github.io/assets/logo.jpg">
 
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.92em' font-size='90'>🍋</text></svg>">
@@ -30,551 +30,584 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Heebo:wght@400;700;800;900&family=Rubik+Mono+One&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=VT323&family=Heebo:wght@400;500;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
-  /* ============================================================
-     LEMONS GAMING — Portfolio
-     Palette: lemon-yellow accents on charcoal canvas
-     ============================================================ */
-  :root {
-    --bg:        #0a0a0e;
-    --bg-2:      #15151c;
-    --ink:       #f4f4f6;
-    --ink-dim:   #9ca3af;
-    --lemon:     #facc15;
-    --lemon-2:   #fde047;
-    --lemon-deep:#ca8a04;
-    --leaf:      #4ade80;
-    --leaf-deep: #166534;
-    --rose:      #f97171;
-    --sky:       #60a5fa;
-    --line:      rgba(250, 204, 21, .18);
-    --line-strong: rgba(250, 204, 21, .42);
-  }
+/* ============================================================
+   LEMONS GAMING · Portfolio
+   Aesthetic: dark atmospheric, lemon-yellow accent, game art forward
+   Reference: klei.com (illustrative game studio aesthetic)
+   ============================================================ */
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --bg:       #08080c;
+  --bg-soft:  #11111a;
+  --bg-card:  #15151f;
+  --ink:      #f5f5f7;
+  --ink-dim:  #8a8a99;
+  --ink-mute: #5a5a6a;
+  --lemon:    #facc15;
+  --lemon-2:  #fde68a;
+  --lemon-dim:#a77f0a;
+  --line:     rgba(255,255,255,.06);
+  --line-hi:  rgba(250,204,21,.55);
+}
 
-  html { scroll-behavior: smooth; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Heebo', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  overflow-x: hidden;
+  min-height: 100vh;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
 
-  body {
-    font-family: 'Heebo', system-ui, sans-serif;
-    background: var(--bg);
-    color: var(--ink);
-    overflow-x: hidden;
-    min-height: 100vh;
-    line-height: 1.55;
-    -webkit-font-smoothing: antialiased;
-  }
+/* ────────── header ────────── */
+.site-header {
+  position: fixed; top: 0; inset-inline: 0; z-index: 100;
+  padding: 18px 32px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: linear-gradient(to bottom, rgba(8,8,12,.85), transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: background .2s;
+}
+.site-header.scrolled {
+  background: rgba(8,8,12,.92);
+  border-bottom: 1px solid var(--line);
+}
+.brand {
+  display: flex; align-items: center; gap: 12px;
+  text-decoration: none; color: inherit;
+}
+.brand img {
+  width: 42px; height: 42px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 0 0 1px var(--line);
+}
+.brand-text {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 2px;
+  color: var(--lemon);
+}
+.nav-links { display: flex; gap: 26px; list-style: none; }
+.nav-links a {
+  color: var(--ink-dim);
+  text-decoration: none;
+  font-weight: 700; font-size: 14px;
+  transition: color .15s;
+}
+.nav-links a:hover { color: var(--lemon); }
+@media (max-width: 640px) {
+  .site-header { padding: 14px 18px; }
+  .nav-links { display: none; }
+  .brand img { width: 36px; height: 36px; }
+}
 
-  /* ---------------- Background FX layers ---------------- */
-  .bg-grid {
-    position: fixed; inset: 0; z-index: 0; pointer-events: none;
-    background-image:
-      linear-gradient(rgba(250,204,21,.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(250,204,21,.04) 1px, transparent 1px);
-    background-size: 48px 48px;
-    mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
-  }
-  .bg-glow {
-    position: fixed; inset: 0; z-index: 0; pointer-events: none;
-    background:
-      radial-gradient(ellipse 60vw 50vh at 80% -10%, rgba(250,204,21,.10), transparent 60%),
-      radial-gradient(ellipse 50vw 40vh at 10% 100%, rgba(74,222,128,.06), transparent 70%);
-  }
-  .scanlines {
-    position: fixed; inset: 0; z-index: 999; pointer-events: none;
-    background: repeating-linear-gradient(
-      0deg,
-      transparent 0 2px,
-      rgba(0,0,0,.18) 2px 3px
-    );
-    mix-blend-mode: multiply;
-    opacity: .35;
-  }
-  .stars { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
-  .stars span {
-    position: absolute;
-    background: var(--lemon-2);
-    border-radius: 50%;
-    opacity: .6;
-    animation: twinkle 4s infinite ease-in-out;
-  }
-  @keyframes twinkle {
-    0%, 100% { opacity: .15; transform: scale(.8); }
-    50%      { opacity: .9;  transform: scale(1.2); }
-  }
+/* ────────── hero ────────── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 120px 28px 60px;
+  text-align: center;
+  isolation: isolate;
+}
+.hero-bg {
+  position: absolute; inset: 0; z-index: -1;
+  background:
+    radial-gradient(ellipse 70vw 60vh at 50% 30%, rgba(250,204,21,.10), transparent 70%),
+    linear-gradient(180deg, #0d0d18 0%, #08080c 100%);
+}
+.hero-stars { position: absolute; inset: 0; z-index: -1; }
+.hero-stars span {
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+  opacity: .5;
+  animation: twinkle 4s infinite ease-in-out;
+}
+@keyframes twinkle {
+  0%, 100% { opacity: .15; transform: scale(.7); }
+  50%      { opacity: .9; transform: scale(1.3); }
+}
+.hero-logo {
+  width: min(280px, 50vw);
+  margin-bottom: 36px;
+  border-radius: 16px;
+  box-shadow:
+    0 0 0 1px rgba(250,204,21,.2),
+    0 20px 60px -10px rgba(250,204,21,.30),
+    0 60px 100px -30px rgba(0,0,0,.8);
+  animation: floaty 6s ease-in-out infinite;
+}
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+.hero-prompt {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(20px, 2.6vw, 28px);
+  font-weight: 700;
+  color: var(--lemon);
+  letter-spacing: 4px;
+  margin-bottom: 14px;
+  direction: ltr;
+  text-shadow: 0 0 24px rgba(250,204,21,.4);
+}
+.hero-prompt .cursor {
+  display: inline-block;
+  width: .58em;
+  height: 1em;
+  background: var(--lemon);
+  margin-inline-start: 4px;
+  vertical-align: -.13em;
+  animation: blink 1.05s steps(2, start) infinite;
+}
+@keyframes blink { to { opacity: 0; } }
+.hero-tagline {
+  font-size: clamp(28px, 4.5vw, 48px);
+  font-weight: 900;
+  color: var(--ink);
+  letter-spacing: -.5px;
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+.hero-tagline .accent {
+  color: var(--lemon);
+  display: inline-block;
+  position: relative;
+}
+.hero-tagline .accent::after {
+  content: '';
+  position: absolute;
+  inset-inline-start: 0; bottom: -4px;
+  width: 100%; height: 3px;
+  background: var(--lemon);
+  opacity: .5;
+  border-radius: 2px;
+}
+.hero-sub {
+  color: var(--ink-dim);
+  font-size: clamp(15px, 1.6vw, 17px);
+  max-width: 520px;
+  margin-bottom: 40px;
+}
+.hero-cta {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 16px 32px;
+  background: var(--lemon);
+  color: #000;
+  font-weight: 900;
+  font-size: 16px;
+  text-decoration: none;
+  border-radius: 999px;
+  border: 2px solid #000;
+  box-shadow:
+    0 6px 0 var(--lemon-dim),
+    0 18px 40px -10px rgba(250,204,21,.5);
+  transition: all .15s;
+}
+.hero-cta:hover {
+  transform: translateY(-3px);
+  box-shadow:
+    0 9px 0 var(--lemon-dim),
+    0 22px 50px -10px rgba(250,204,21,.65);
+}
+.hero-cta:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 var(--lemon-dim);
+}
+.hero-cta .arrow { transition: transform .2s; }
+.hero-cta:hover .arrow { transform: translateX(-4px); }
+.hero-scroll {
+  position: absolute;
+  bottom: 32px; left: 50%;
+  transform: translateX(-50%);
+  color: var(--ink-mute);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 2px;
+  animation: bob 2s ease-in-out infinite;
+}
+@keyframes bob {
+  0%, 100% { transform: translate(-50%, 0); }
+  50%      { transform: translate(-50%, 8px); }
+}
 
-  /* ---------------- Header ---------------- */
-  .site-header {
-    position: sticky; top: 0; z-index: 50;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    background: rgba(10,10,14,.72);
-    border-bottom: 1px solid var(--line);
-  }
-  .header-inner {
-    max-width: 1240px; margin: 0 auto;
-    padding: 14px 28px;
-    display: flex; align-items: center; justify-content: space-between;
-    gap: 18px;
-  }
-  .brand {
-    display: flex; align-items: center; gap: 14px;
-    text-decoration: none; color: inherit;
-  }
-  .brand img { height: 44px; width: auto; display: block; border-radius: 6px; }
-  .brand .brand-text {
-    font-family: 'Press Start 2P', monospace;
-    font-size: 13px; letter-spacing: 2px;
-    color: var(--lemon);
-    text-shadow: 0 2px 0 var(--lemon-deep);
-  }
-  .nav-links {
-    display: flex; gap: 22px; list-style: none;
-  }
-  .nav-links a {
-    color: var(--ink-dim);
-    text-decoration: none;
-    font-weight: 700; font-size: 14px;
-    transition: color .15s;
-    position: relative;
-  }
-  .nav-links a:hover { color: var(--lemon); }
-  .nav-links a::after {
-    content: ''; position: absolute; right: 0; bottom: -4px;
-    width: 0; height: 2px; background: var(--lemon);
-    transition: width .25s;
-  }
-  .nav-links a:hover::after { width: 100%; }
+/* ────────── about strip ────────── */
+.manifesto {
+  position: relative;
+  padding: 100px 28px;
+  text-align: center;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: var(--bg-soft);
+}
+.manifesto-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: var(--lemon);
+  margin-bottom: 18px;
+}
+.manifesto-title {
+  font-size: clamp(36px, 6vw, 60px);
+  font-weight: 900;
+  color: var(--ink);
+  letter-spacing: -1px;
+  margin-bottom: 24px;
+  direction: ltr;
+  unicode-bidi: plaintext;
+}
+.manifesto-title .underline {
+  color: var(--lemon);
+}
+.manifesto-body {
+  max-width: 720px;
+  margin: 0 auto;
+  color: var(--ink-dim);
+  font-size: clamp(17px, 1.8vw, 20px);
+  line-height: 1.65;
+}
 
-  @media (max-width: 640px) {
-    .nav-links { display: none; }
-    .brand img { height: 36px; }
-    .brand .brand-text { font-size: 11px; }
-  }
+/* ────────── showcase ────────── */
+.showcase {
+  padding: 100px 28px;
+  max-width: 1320px;
+  margin: 0 auto;
+}
+.showcase-head {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  margin-bottom: 50px;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.showcase-title {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 900;
+  color: var(--ink);
+  letter-spacing: -.5px;
+}
+.showcase-title .count {
+  color: var(--lemon);
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: .55em;
+  margin-inline-start: 12px;
+  vertical-align: middle;
+}
+.showcase-sub {
+  color: var(--ink-dim);
+  font-size: 15px;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 1px;
+}
+.showcase-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+@media (max-width: 860px) {
+  .showcase-grid { grid-template-columns: 1fr; }
+  .showcase { padding: 70px 18px; }
+}
 
-  /* ---------------- Hero ---------------- */
-  .hero {
-    position: relative; z-index: 2;
-    padding: 80px 28px 60px;
-    text-align: center;
-    max-width: 1100px; margin: 0 auto;
-  }
-  .hero-logo {
-    width: min(420px, 80vw);
-    margin: 0 auto 32px;
-    display: block;
-    border-radius: 18px;
-    box-shadow:
-      0 0 0 1px var(--line-strong),
-      0 30px 80px -20px rgba(250,204,21,.35),
-      0 0 120px -40px rgba(250,204,21,.55);
-    transition: transform .4s cubic-bezier(.2,.7,.2,1.4);
-  }
-  .hero-logo:hover { transform: translateY(-4px) scale(1.02); }
+.game {
+  position: relative;
+  display: block;
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  text-decoration: none;
+  color: inherit;
+  aspect-ratio: 16 / 10;
+  isolation: isolate;
+  transition: border-color .25s, transform .35s cubic-bezier(.2,.7,.2,1);
+}
+.game-art {
+  position: absolute; inset: 0; z-index: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform .9s cubic-bezier(.2,.7,.2,1), filter .4s;
+  filter: saturate(.9) brightness(.85);
+}
+.game-overlay {
+  position: absolute; inset: 0; z-index: 1;
+  background:
+    linear-gradient(to top, rgba(8,8,12,.95) 0%, rgba(8,8,12,.55) 45%, rgba(8,8,12,.05) 75%, transparent 100%);
+  transition: opacity .35s;
+}
+.game-content {
+  position: absolute; inset: 0; z-index: 2;
+  padding: 24px 26px;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+}
+.game-tag {
+  position: absolute;
+  top: 18px; inset-inline-start: 18px;
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 2px;
+  padding: 6px 10px;
+  background: rgba(8,8,12,.65);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--lemon);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.game-tag.lesson  { color: #93c5fd; }
+.game-tag.guest   { color: #fca5a5; }
+.game-tag .dot {
+  width: 6px; height: 6px;
+  background: currentColor;
+  border-radius: 50%;
+  box-shadow: 0 0 8px currentColor;
+}
+.game-en {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: var(--lemon);
+  margin-bottom: 6px;
+  direction: ltr;
+  text-shadow: 0 2px 12px rgba(0,0,0,.6);
+}
+.game-title {
+  font-size: clamp(22px, 2.6vw, 30px);
+  font-weight: 900;
+  color: var(--ink);
+  line-height: 1.15;
+  margin-bottom: 8px;
+  text-shadow: 0 2px 16px rgba(0,0,0,.65);
+}
+.game-desc {
+  font-size: 14px;
+  color: rgba(245,245,247,.85);
+  max-width: 480px;
+  text-shadow: 0 1px 8px rgba(0,0,0,.7);
+  margin-bottom: 12px;
+}
+.game-play {
+  display: inline-flex; align-items: center; gap: 8px;
+  color: var(--lemon);
+  font-weight: 900;
+  font-size: 15px;
+}
+.game-play .arrow { transition: transform .2s; display: inline-block; }
+.game:hover .game-art {
+  transform: scale(1.05);
+  filter: saturate(1.05) brightness(1);
+}
+.game:hover .game-overlay { opacity: .85; }
+.game:hover { border-color: var(--line-hi); transform: translateY(-4px); }
+.game:hover .game-play .arrow { transform: translateX(-6px); }
+.game:hover .game-play { color: var(--lemon-2); }
 
-  .hero-title {
-    font-family: 'Press Start 2P', monospace;
-    font-size: clamp(28px, 5.5vw, 56px);
-    color: var(--lemon);
-    letter-spacing: 4px;
-    line-height: 1.4;
-    margin-bottom: 18px;
-    text-shadow:
-      0 4px 0 var(--lemon-deep),
-      0 8px 32px rgba(250,204,21,.35);
-    direction: ltr;
-  }
-  .hero-title .blink {
-    display: inline-block;
-    animation: blink 1.1s steps(2, end) infinite;
-  }
-  @keyframes blink { 50% { opacity: 0; } }
+/* per-game art */
+.game[data-id="break-the-word"]      .game-art { background-image: url('assets/screens/break-the-word.png'); }
+.game[data-id="lions-roar"]          .game-art { background-image: url('assets/screens/lions-roar.png'); }
+.game[data-id="geography-puzzle-game"] .game-art { background-image: url('assets/screens/geography-puzzle-game.png'); }
+.game[data-id="Magnetic-Mission"]    .game-art { background-image: url('assets/screens/Magnetic-Mission.png'); }
+.game[data-id="tap-and-pop"]         .game-art { background-image: url('assets/screens/tap-and-pop.png'); }
+.game[data-id="mini-metro-lesson"]   .game-art { background-image: url('assets/screens/mini-metro-lesson.png'); }
+.game[data-id="young-investor"]      .game-art { background-image: url('assets/screens/young-investor.png'); background-position: top center; }
 
-  .hero-tagline {
-    font-size: clamp(20px, 2.6vw, 28px);
-    font-weight: 900;
-    color: var(--ink);
-    margin-bottom: 10px;
-  }
-  .hero-sub {
-    font-size: clamp(15px, 1.6vw, 18px);
-    color: var(--ink-dim);
-    max-width: 640px;
-    margin: 0 auto 36px;
-  }
-  .hero-cta {
-    display: inline-block;
-    padding: 16px 36px;
-    background: var(--lemon);
-    color: #000;
-    font-family: 'Heebo', sans-serif;
-    font-weight: 900;
-    font-size: 17px;
-    text-decoration: none;
-    border-radius: 999px;
-    border: 3px solid #000;
-    box-shadow:
-      0 4px 0 var(--lemon-deep),
-      0 12px 30px -8px rgba(250,204,21,.5);
-    transition: all .15s ease;
-  }
-  .hero-cta:hover {
-    transform: translateY(-3px);
-    box-shadow:
-      0 7px 0 var(--lemon-deep),
-      0 18px 40px -8px rgba(250,204,21,.65);
-  }
-  .hero-cta:active {
-    transform: translateY(1px);
-    box-shadow: 0 2px 0 var(--lemon-deep);
-  }
+/* ────────── footer ────────── */
+footer {
+  border-top: 1px solid var(--line);
+  padding: 60px 28px 50px;
+  text-align: center;
+  color: var(--ink-mute);
+  font-size: 13px;
+  font-family: 'JetBrains Mono', monospace;
+  letter-spacing: 1px;
+}
+footer .lemon-bounce {
+  display: inline-block;
+  animation: bounce 1.6s ease-in-out infinite;
+}
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+footer .footer-link {
+  color: var(--lemon);
+  text-decoration: none;
+}
+footer .footer-link:hover { text-decoration: underline; }
 
-  /* ---------------- Stats strip ---------------- */
-  .stats {
-    position: relative; z-index: 2;
-    max-width: 980px; margin: 0 auto;
-    padding: 0 28px;
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-  }
-  .stat {
-    background: rgba(21,21,28,.6);
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    padding: 18px 20px;
-    text-align: center;
-  }
-  .stat-num {
-    font-family: 'Press Start 2P', monospace;
-    color: var(--lemon);
-    font-size: 22px;
-    margin-bottom: 6px;
-  }
-  .stat-lbl { color: var(--ink-dim); font-size: 13px; font-weight: 700; }
-  @media (max-width: 640px) {
-    .stats { grid-template-columns: 1fr; }
-  }
-
-  /* ---------------- Section heading ---------------- */
-  .section-heading {
-    position: relative; z-index: 2;
-    text-align: center;
-    margin: 100px auto 36px;
-    max-width: 1100px;
-    padding: 0 28px;
-  }
-  .section-eyebrow {
-    font-family: 'Press Start 2P', monospace;
-    color: var(--lemon);
-    font-size: 11px;
-    letter-spacing: 3px;
-    margin-bottom: 14px;
-  }
-  .section-title {
-    font-size: clamp(28px, 4.2vw, 44px);
-    font-weight: 900;
-    color: var(--ink);
-    margin-bottom: 8px;
-  }
-  .section-title .accent { color: var(--lemon); }
-  .section-sub { color: var(--ink-dim); font-size: 16px; }
-
-  /* ---------------- Games grid ---------------- */
-  .games {
-    position: relative; z-index: 2;
-    max-width: 1240px; margin: 0 auto;
-    padding: 0 28px 80px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
-    gap: 22px;
-  }
-
-  .card {
-    position: relative;
-    background: linear-gradient(165deg, rgba(21,21,28,.95), rgba(10,10,14,.95));
-    border: 2px solid var(--line);
-    border-radius: 18px;
-    padding: 26px 22px;
-    text-decoration: none; color: inherit;
-    overflow: hidden;
-    transition: all .25s cubic-bezier(.2,.7,.2,1);
-    display: flex; flex-direction: column;
-    min-height: 320px;
-  }
-  .card::before {
-    content: '';
-    position: absolute; inset: 0;
-    background: radial-gradient(circle at top right, var(--card-glow, rgba(250,204,21,.18)), transparent 65%);
-    opacity: 0; transition: opacity .3s;
-    pointer-events: none;
-  }
-  .card:hover {
-    transform: translateY(-8px) scale(1.01);
-    border-color: var(--line-strong);
-    box-shadow:
-      0 30px 60px -20px rgba(0,0,0,.7),
-      0 0 0 1px var(--lemon),
-      0 0 60px -10px var(--card-glow, rgba(250,204,21,.4));
-  }
-  .card:hover::before { opacity: 1; }
-
-  .card-tag {
-    align-self: flex-start;
-    font-family: 'Press Start 2P', monospace;
-    font-size: 9px; letter-spacing: 2px;
-    padding: 6px 10px;
-    border-radius: 6px;
-    background: rgba(250,204,21,.15);
-    color: var(--lemon);
-    border: 1px solid var(--line-strong);
-    margin-bottom: 18px;
-  }
-  .card-tag.lesson {
-    background: rgba(96,165,250,.15);
-    color: var(--sky);
-    border-color: rgba(96,165,250,.4);
-  }
-
-  .card-icon {
-    font-size: 52px;
-    line-height: 1;
-    margin-bottom: 14px;
-    filter: drop-shadow(0 4px 20px var(--card-glow, rgba(250,204,21,.3)));
-  }
-
-  .card-title {
-    font-size: 26px;
-    font-weight: 900;
-    color: var(--ink);
-    margin-bottom: 4px;
-    line-height: 1.2;
-  }
-  .card-title-en {
-    font-family: 'VT323', monospace;
-    font-size: 18px;
-    color: var(--lemon);
-    letter-spacing: 1px;
-    margin-bottom: 14px;
-    direction: ltr;
-    display: inline-block;
-  }
-
-  .card-desc {
-    color: var(--ink-dim);
-    font-size: 15px;
-    flex: 1;
-    margin-bottom: 18px;
-  }
-
-  .card-cta {
-    display: inline-flex; align-items: center; gap: 8px;
-    color: var(--lemon);
-    font-weight: 900;
-    font-size: 15px;
-    align-self: flex-start;
-    transition: gap .2s, color .2s;
-  }
-  .card-cta::after {
-    content: '←';
-    transition: transform .2s;
-    display: inline-block;
-  }
-  .card:hover .card-cta::after { transform: translateX(-6px); }
-  .card:hover .card-cta { color: var(--lemon-2); }
-
-  /* color variants per card */
-  .card[data-accent="lemon"]  { --card-glow: rgba(250,204,21,.35); }
-  .card[data-accent="sky"]    { --card-glow: rgba(96,165,250,.30); }
-  .card[data-accent="leaf"]   { --card-glow: rgba(74,222,128,.30); }
-  .card[data-accent="rose"]   { --card-glow: rgba(249,113,113,.30); }
-  .card[data-accent="violet"] { --card-glow: rgba(167,139,250,.30); }
-  .card[data-accent="orange"] { --card-glow: rgba(251,146,60,.30); }
-
-  /* ---------------- About strip ---------------- */
-  .about {
-    position: relative; z-index: 2;
-    max-width: 940px; margin: 60px auto;
-    padding: 50px 32px;
-    background: linear-gradient(135deg, rgba(250,204,21,.06), rgba(74,222,128,.04));
-    border: 1px solid var(--line);
-    border-radius: 22px;
-    text-align: center;
-  }
-  .about h3 {
-    font-family: 'Press Start 2P', monospace;
-    font-size: 14px;
-    color: var(--lemon);
-    letter-spacing: 3px;
-    margin-bottom: 18px;
-  }
-  .about p {
-    color: var(--ink);
-    font-size: 17px;
-    max-width: 680px; margin: 0 auto 12px;
-  }
-  .about p.dim { color: var(--ink-dim); font-size: 15px; }
-
-  /* ---------------- Footer ---------------- */
-  footer {
-    position: relative; z-index: 2;
-    padding: 40px 28px 60px;
-    text-align: center;
-    color: var(--ink-dim);
-    font-size: 14px;
-    border-top: 1px solid var(--line);
-    margin-top: 40px;
-  }
-  footer .lemon-spin {
-    display: inline-block;
-    animation: spin 6s linear infinite;
-    margin: 0 4px;
-  }
-  @keyframes spin { to { transform: rotate(360deg); } }
-  footer a { color: var(--lemon); text-decoration: none; font-weight: 700; }
-  footer a:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
 
-<div class="bg-glow"></div>
-<div class="bg-grid"></div>
-<div class="stars" id="stars"></div>
-
-<header class="site-header">
-  <div class="header-inner">
-    <a class="brand" href="/">
-      <img src="assets/logo.jpg" alt="">
-      <span class="brand-text">LEMONS GAMING</span>
-    </a>
-    <ul class="nav-links">
-      <li><a href="#games">המשחקים</a></li>
-      <li><a href="#about">עלינו</a></li>
-    </ul>
-  </div>
+<header class="site-header" id="header">
+  <a class="brand" href="/">
+    <img src="assets/logo.jpg" alt="">
+    <span class="brand-text">LEMONS GAMING</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#games">המשחקים</a></li>
+    <li><a href="#manifesto">למה</a></li>
+  </ul>
 </header>
 
-<main>
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-stars" id="hero-stars"></div>
+  <img src="assets/logo.jpg" alt="Lemons Gaming" class="hero-logo">
+  <div class="hero-prompt">PRESS&nbsp;START<span class="cursor"></span></div>
+  <h1 class="hero-tagline">משחקים <span class="accent">ללמידה</span> ולכיף</h1>
+  <p class="hero-sub">אוסף משחקים שרצים ישירות בדפדפן. כל אחד יושב על שאלה לימודית אחת — וכל אחד גם כיף לשחק בו.</p>
+  <a href="#games" class="hero-cta">לחדר המשחקים <span class="arrow">←</span></a>
+  <div class="hero-scroll">SCROLL ↓</div>
+</section>
 
-  <section class="hero">
-    <img src="assets/logo.jpg" alt="Lemons Gaming" class="hero-logo">
-    <h1 class="hero-title">PRESS START<span class="blink">_</span></h1>
-    <p class="hero-tagline">משחקי חינוך עם נשמה רטרו</p>
-    <p class="hero-sub">סטודיו ישראלי שמאמין שהדרך הכי קצרה ללמידה אמיתית עוברת דרך גיימינג. כל המשחקים פתוחים ורצים ישירות בדפדפן.</p>
-    <a href="#games" class="hero-cta">להיכנס לחדר המשחקים ←</a>
-  </section>
+<section class="manifesto" id="manifesto">
+  <div class="manifesto-tag">// MANIFESTO</div>
+  <h2 class="manifesto-title">Gaming&nbsp;<span class="underline">Is</span>&nbsp;Learning</h2>
+  <p class="manifesto-body">בין אם מדובר בתוכן לימודי, או במיומנויות מוטוריות, חברתיות או קוגניטיביות — כל משחק הוא בעצם מערכת לימוד מוסווית. ב-Lemons Gaming אנחנו לוקחים את ההסוואה ברצינות.</p>
+</section>
 
-  <div class="stats">
-    <div class="stat">
-      <div class="stat-num">06</div>
-      <div class="stat-lbl">חוויות</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">100%</div>
-      <div class="stat-lbl">בדפדפן · בלי התקנות</div>
-    </div>
-    <div class="stat">
-      <div class="stat-num">FREE</div>
-      <div class="stat-lbl">חינם לחלוטין</div>
-    </div>
-  </div>
-
-  <header class="section-heading" id="games">
-    <div class="section-eyebrow">// SELECT YOUR GAME</div>
-    <h2 class="section-title">חדר ה<span class="accent">משחקים</span></h2>
-    <p class="section-sub">6 חוויות מוכנות לשחק · לחצו ובחרו</p>
+<section class="showcase" id="games">
+  <header class="showcase-head">
+    <h2 class="showcase-title">חדר המשחקים<span class="count">07 //</span></h2>
+    <p class="showcase-sub">// SELECT &nbsp; YOUR &nbsp; GAME</p>
   </header>
 
-  <div class="games">
+  <div class="showcase-grid">
 
-    <a class="card" data-accent="lemon" data-game="break-the-word" href="https://lemons-gaming.github.io/break-the-word/" target="_blank" rel="noopener">
-      <span class="card-tag">משחק · קריאה</span>
-      <div class="card-icon">📖</div>
-      <h3 class="card-title">שבור את המילה</h3>
-      <span class="card-title-en">BREAK&nbsp;THE&nbsp;WORD</span>
-      <p class="card-desc">משחק בסגנון רטרו ללימוד קריאה. שובר את הלבנים, חושף את המילה, פותר את החידה.</p>
-      <span class="card-cta">לשחק עכשיו</span>
+    <a class="game" data-id="lions-roar" data-game="lions-roar" href="https://lemons-gaming.github.io/lions-roar/" target="_blank" rel="noopener">
+      <div class="game-art"></div>
+      <div class="game-overlay"></div>
+      <span class="game-tag"><span class="dot"></span>אקשן</span>
+      <div class="game-content">
+        <div class="game-en">LION'S ROAR</div>
+        <h3 class="game-title">שאגת הארי</h3>
+        <p class="game-desc">משימות הפצצה בעורף האויב — 3 שלבים מדבריים, נשק כבד, ניקוד גבוה.</p>
+        <span class="game-play">לשחק <span class="arrow">←</span></span>
+      </div>
     </a>
 
-    <a class="card" data-accent="orange" data-game="lions-roar" href="https://lemons-gaming.github.io/lions-roar/" target="_blank" rel="noopener">
-      <span class="card-tag">משחק · אקשן</span>
-      <div class="card-icon">✈️</div>
-      <h3 class="card-title">שאגת הארי</h3>
-      <span class="card-title-en">LION'S&nbsp;ROAR</span>
-      <p class="card-desc">משימות הפצצה בעורף האויב. 3 שלבים מדבריים, נשק כבד, ניקוד גבוה.</p>
-      <span class="card-cta">לשחק עכשיו</span>
+    <a class="game" data-id="Magnetic-Mission" data-game="Magnetic-Mission" href="https://lemons-gaming.github.io/Magnetic-Mission/" target="_blank" rel="noopener">
+      <div class="game-art"></div>
+      <div class="game-overlay"></div>
+      <span class="game-tag"><span class="dot"></span>פיזיקה · י"ב</span>
+      <div class="game-content">
+        <div class="game-en">MAGNETIC MISSION</div>
+        <h3 class="game-title">המשימה המגנטית</h3>
+        <p class="game-desc">משחק הרפתקאות המבוסס על ניסוי מעבדה בפיזיקה לכיתה י"ב. גלוונומטר, השדה המגנטי ומסע במעמקי כדור הארץ.</p>
+        <span class="game-play">לשחק <span class="arrow">←</span></span>
+      </div>
     </a>
 
-    <a class="card" data-accent="leaf" data-game="geography-puzzle-game" href="https://lemons-gaming.github.io/geography-puzzle-game/" target="_blank" rel="noopener">
-      <span class="card-tag">משחק · גיאוגרפיה</span>
-      <div class="card-icon">🌍</div>
-      <h3 class="card-title">פאזל גיאוגרפי</h3>
-      <span class="card-title-en">GEO&nbsp;PUZZLE</span>
-      <p class="card-desc">הכירו את מפת העולם. פאזל אינטראקטיבי + חידוני יבשות, מדינות וערים.</p>
-      <span class="card-cta">לשחק עכשיו</span>
+    <a class="game" data-id="break-the-word" data-game="break-the-word" href="https://lemons-gaming.github.io/break-the-word/" target="_blank" rel="noopener">
+      <div class="game-art"></div>
+      <div class="game-overlay"></div>
+      <span class="game-tag"><span class="dot"></span>קריאה</span>
+      <div class="game-content">
+        <div class="game-en">BREAK THE WORD</div>
+        <h3 class="game-title">שבור את המילה</h3>
+        <p class="game-desc">משחק בסגנון רטרו ללימוד קריאה. שובר את הלבנים, חושף את המילה, פותר את החידה.</p>
+        <span class="game-play">לשחק <span class="arrow">←</span></span>
+      </div>
     </a>
 
-    <a class="card" data-accent="violet" data-game="Magnetic-Mission" href="https://lemons-gaming.github.io/Magnetic-Mission/" target="_blank" rel="noopener">
-      <span class="card-tag">משחק · פיזיקה</span>
-      <div class="card-icon">🧲</div>
-      <h3 class="card-title">המשימה המגנטית</h3>
-      <span class="card-title-en">MAGNETIC&nbsp;MISSION</span>
-      <p class="card-desc">משחק הרפתקאות סביב ניסוי מעבדה בפיזיקה לכיתה י"ב. השדה המגנטי, גלוונומטר ומסע במעמקי כדור הארץ.</p>
-      <span class="card-cta">לשחק עכשיו</span>
+    <a class="game" data-id="geography-puzzle-game" data-game="geography-puzzle-game" href="https://lemons-gaming.github.io/geography-puzzle-game/" target="_blank" rel="noopener">
+      <div class="game-art"></div>
+      <div class="game-overlay"></div>
+      <span class="game-tag"><span class="dot"></span>גיאוגרפיה</span>
+      <div class="game-content">
+        <div class="game-en">GEO PUZZLE</div>
+        <h3 class="game-title">פאזל גיאוגרפי</h3>
+        <p class="game-desc">הכירו את מפת העולם — פאזל אינטראקטיבי + חידוני יבשות, מדינות וערים.</p>
+        <span class="game-play">לשחק <span class="arrow">←</span></span>
+      </div>
     </a>
 
-    <a class="card" data-accent="rose" data-game="tap-and-pop" href="https://lemons-gaming.github.io/tap-and-pop/" target="_blank" rel="noopener">
-      <span class="card-tag">משחק · רפלקסים</span>
-      <div class="card-icon">🎯</div>
-      <h3 class="card-title">מצא את הצורה</h3>
-      <span class="card-title-en">SPOT&nbsp;THE&nbsp;SHAPE</span>
-      <p class="card-desc">משחק רפלקסים. צורה אחת מופיעה למטה — מצאו אותה בין הצורות הצפות לפני שהזמן נגמר.</p>
-      <span class="card-cta">לשחק עכשיו</span>
+    <a class="game" data-id="young-investor" data-game="young-investor" href="https://liluo.io/lemonsgaming/theyounginvestor" target="_blank" rel="noopener">
+      <div class="game-art"></div>
+      <div class="game-overlay"></div>
+      <span class="game-tag guest"><span class="dot"></span>אורח · liluo.io</span>
+      <div class="game-content">
+        <div class="game-en">THE YOUNG INVESTOR</div>
+        <h3 class="game-title">המשקיעים הצעירים</h3>
+        <p class="game-desc">משחק חינוכי מקראה — אסטרטגיה, ניהול משאבים והכרה ראשונה עם עולם ההשקעות.</p>
+        <span class="game-play">לשחק <span class="arrow">←</span></span>
+      </div>
     </a>
 
-    <a class="card" data-accent="sky" data-game="mini-metro-lesson" href="https://lemons-gaming.github.io/mini-metro-lesson/" target="_blank" rel="noopener">
-      <span class="card-tag lesson">מערך שיעור · חינוך</span>
-      <div class="card-icon">🚇</div>
-      <h3 class="card-title">Mini Metro</h3>
-      <span class="card-title-en">LESSON&nbsp;PLAN</span>
-      <p class="card-desc">מערך שיעור אינטראקטיבי סביב המשחק Mini Metro. מיומנויות תכנון, אסטרטגיה ויעילות.</p>
-      <span class="card-cta">לפתוח שיעור</span>
+    <a class="game" data-id="tap-and-pop" data-game="tap-and-pop" href="https://lemons-gaming.github.io/tap-and-pop/" target="_blank" rel="noopener">
+      <div class="game-art"></div>
+      <div class="game-overlay"></div>
+      <span class="game-tag"><span class="dot"></span>רפלקסים</span>
+      <div class="game-content">
+        <div class="game-en">SPOT THE SHAPE</div>
+        <h3 class="game-title">מצא את הצורה</h3>
+        <p class="game-desc">משחק רפלקסים — צורה אחת מופיעה למטה, מצאו אותה בין הצורות הצפות לפני שהזמן נגמר.</p>
+        <span class="game-play">לשחק <span class="arrow">←</span></span>
+      </div>
+    </a>
+
+    <a class="game" data-id="mini-metro-lesson" data-game="mini-metro-lesson" href="https://lemons-gaming.github.io/mini-metro-lesson/" target="_blank" rel="noopener">
+      <div class="game-art"></div>
+      <div class="game-overlay"></div>
+      <span class="game-tag lesson"><span class="dot"></span>מערך שיעור</span>
+      <div class="game-content">
+        <div class="game-en">MINI METRO · LESSON</div>
+        <h3 class="game-title">Mini Metro</h3>
+        <p class="game-desc">מערך שיעור אינטראקטיבי סביב המשחק Mini Metro — מיומנויות תכנון, אסטרטגיה ויעילות.</p>
+        <span class="game-play">לפתוח <span class="arrow">←</span></span>
+      </div>
     </a>
 
   </div>
-
-  <section class="about" id="about">
-    <h3>// ABOUT</h3>
-    <p><strong>Lemons Gaming</strong> מפתחת משחקי דפדפן חינוכיים בעברית.</p>
-    <p class="dim">כל פרויקט מתחיל משאלה חינוכית: איך מלמדים את זה אחרת? המשחקים פתוחים, רצים ישירות בדפדפן, ונבנים מחדש לפי טכנולוגיות הדור הבא. אנחנו מאמינים שכשלמידה מרגישה כמו ארקייד — היא נדבקת.</p>
-  </section>
-
-</main>
+</section>
 
 <footer>
-  <p>© 2026 Lemons Gaming · נבנה עם <span class="lemon-spin">🍋</span> בישראל</p>
+  <p>© 2026 LEMONS GAMING · MADE WITH <span class="lemon-bounce">🍋</span></p>
 </footer>
 
 <script>
-  // ─── Twinkling stars ──────────────────────────────────────
-  (function makeStars() {
-    const wrap = document.getElementById('stars');
-    const N = 60;
-    for (let i = 0; i < N; i++) {
+  // Twinkling stars in hero
+  (function () {
+    const wrap = document.getElementById('hero-stars');
+    for (let i = 0; i < 50; i++) {
       const s = document.createElement('span');
-      const sz = Math.random() * 2.5 + 1;
+      const sz = Math.random() * 2 + .8;
       s.style.width = s.style.height = sz + 'px';
       s.style.left = Math.random() * 100 + 'vw';
       s.style.top  = Math.random() * 100 + 'vh';
       s.style.animationDelay = (Math.random() * 4) + 's';
-      s.style.animationDuration = (3 + Math.random() * 4) + 's';
+      s.style.animationDuration = (3 + Math.random() * 3) + 's';
       wrap.appendChild(s);
     }
   })();
 
-  // ─── GA4: track game card clicks ──────────────────────────
-  document.querySelectorAll('.card[data-game]').forEach(card => {
+  // Sticky header gets bg on scroll
+  const header = document.getElementById('header');
+  const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 40);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  // GA4: track game card clicks
+  document.querySelectorAll('.game[data-game]').forEach(card => {
     card.addEventListener('click', () => {
       if (typeof gtag === 'function') {
         gtag('event', 'game_card_clicked', {
@@ -585,9 +618,8 @@
     });
   });
 
-  // ─── GA4: track CTA click ─────────────────────────────────
-  const cta = document.querySelector('.hero-cta');
-  if (cta) cta.addEventListener('click', () => {
+  // GA4: hero CTA click
+  document.querySelector('.hero-cta')?.addEventListener('click', () => {
     if (typeof gtag === 'function') {
       gtag('event', 'hero_cta_clicked', { game_name: 'portfolio' });
     }
