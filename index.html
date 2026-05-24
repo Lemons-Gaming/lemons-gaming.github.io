@@ -30,81 +30,102 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@500;600;700;800;900&family=Open+Sans:wght@400;600;700&family=Heebo:wght@500;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 
 <style>
 /* ============================================================
-   LEMONS GAMING · v3 — Klei-faithful layout
+   LEMONS GAMING · v4 — Klei-faithful clone
+   Palette, type, and structure mirror klei.com
    ============================================================ */
 
 :root {
-  --bg:        #0b0b0f;
-  --bg-soft:   #15151c;
-  --bg-card:   #1a1a23;
-  --ink:       #f5f5f7;
-  --ink-dim:   #9a9aa8;
-  --ink-mute:  #5f5f6f;
-  --lemon:     #facc15;
-  --lemon-2:   #fde047;
-  --lemon-dim: #a77f0a;
-  --tag-red:   #f87171;
-  --line:      rgba(255,255,255,.06);
-  --line-hi:   rgba(250,204,21,.45);
+  /* klei palette (sampled from klei.com) */
+  --bg:           #0F0D0C;   /* warm-dark page bg */
+  --bg-section:   #161211;
+  --bg-card:      #221D1A;
+  --ink:          #FFFFFF;
+  --ink-soft:     #E5E1DC;
+  --ink-mute:     rgba(229,225,220,.55);
+  --orange:       #F16739;   /* klei CTA */
+  --orange-2:     #f48557;
+  --red:          #FF253A;   /* klei "NEW" tag color */
+  --lemon:        #facc15;   /* OUR brand accent */
+  --lemon-2:      #fde047;
+  --line:         rgba(255,255,255,.06);
+  --line-hi:      rgba(241,103,57,.45);
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
-  font-family: 'Heebo', system-ui, sans-serif;
+  font-family: 'Open Sans', system-ui, sans-serif;
   background: var(--bg);
-  color: var(--ink);
+  color: var(--ink-soft);
   overflow-x: hidden;
   min-height: 100vh;
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
 }
 
-/* ────────── HEADER (klei-style: fixed, dark, caps links) ────────── */
+/* Hebrew text uses Heebo (Barlow has no Hebrew glyphs).
+   English headings use Barlow. */
+.he, [lang="he"] { font-family: 'Heebo', 'Open Sans', sans-serif; }
+.en, [lang="en"] { font-family: 'Barlow', 'Open Sans', sans-serif; }
+
+/* ─────────────────────────── HEADER (klei) ─────────────────────────── */
 .site-header {
   position: fixed; top: 0; inset-inline: 0; z-index: 100;
-  height: 64px;
+  height: 70px;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 0 28px;
-  background: rgba(11,11,15,.95);
+  padding: 0 32px;
+  background: rgba(15, 13, 12, .94);
+  border-bottom: 1px solid var(--line);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--line);
 }
-.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit; }
-.brand img { width: 38px; height: 38px; border-radius: 6px; }
+.brand {
+  display: flex; align-items: center; gap: 14px;
+  text-decoration: none; color: inherit;
+}
+.brand img {
+  width: 44px; height: 44px;
+  border-radius: 8px;
+  object-fit: cover;
+}
 .brand-text {
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: 700; font-size: 12px; letter-spacing: 2px;
+  font-family: 'Barlow', sans-serif;
+  font-weight: 900;
+  font-size: 16px;
+  letter-spacing: 2px;
   color: var(--lemon);
 }
-.nav-links { display: flex; gap: 26px; list-style: none; align-items: center; }
+.nav-links {
+  display: flex; gap: 32px;
+  list-style: none;
+}
 .nav-links a {
-  color: var(--ink);
+  font-family: 'Barlow', sans-serif;
+  color: var(--ink-soft);
   text-decoration: none;
-  font-weight: 700; font-size: 13px;
+  font-weight: 700; font-size: 14px;
   letter-spacing: 1.5px;
   text-transform: uppercase;
   transition: color .15s;
 }
-.nav-links a:hover { color: var(--lemon); }
-
+.nav-links a:hover { color: var(--orange); }
 @media (max-width: 700px) {
-  .site-header { padding: 0 14px; }
-  .nav-links { gap: 16px; }
-  .nav-links a { font-size: 11px; letter-spacing: 1px; }
+  .site-header { padding: 0 16px; height: 60px; }
+  .nav-links { gap: 18px; }
+  .nav-links a { font-size: 12px; letter-spacing: 1px; }
   .brand-text { display: none; }
+  .brand img { width: 38px; height: 38px; }
 }
 
-/* ────────── HERO (compact, ~55vh) ────────── */
+/* ─────────────────────────── HERO (klei "announcement") ─────────────────────────── */
 .hero {
   position: relative;
-  padding: 96px 28px 50px;
-  min-height: 55vh;
+  padding: 120px 32px 70px;
+  min-height: 64vh;
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   text-align: center;
   isolation: isolate;
@@ -115,39 +136,48 @@ body {
   background-image: url('assets/screens/lions-roar.png');
   background-size: cover;
   background-position: center;
-  filter: blur(2px) saturate(.8) brightness(.45);
-  transform-origin: center;
-  animation: kenburns 28s ease-in-out infinite alternate;
+  filter: saturate(.85) brightness(.55);
+  animation: kenburns 30s ease-in-out infinite alternate;
 }
 @keyframes kenburns {
   0%   { transform: scale(1.05) translate(0, 0); }
-  50%  { transform: scale(1.12) translate(-1.5%, 1%); }
-  100% { transform: scale(1.07) translate(1.5%, -1%); }
+  100% { transform: scale(1.12) translate(-1%, 1%); }
 }
-.hero-overlay {
+.hero-shade {
   position: absolute; inset: 0; z-index: -1;
   background:
-    radial-gradient(ellipse 60vw 70vh at 50% 60%, transparent, rgba(11,11,15,.65) 50%, var(--bg) 90%),
-    linear-gradient(180deg, rgba(11,11,15,.5) 0%, rgba(11,11,15,.85) 100%);
-}
-.hero-stars { position: absolute; inset: 0; z-index: -1; }
-.hero-stars span {
-  position: absolute;
-  background: #fff;
-  border-radius: 50%;
-  opacity: .55;
-  animation: twinkle 4s infinite ease-in-out;
-}
-@keyframes twinkle {
-  0%, 100% { opacity: .15; transform: scale(.7); }
-  50%      { opacity: .9; transform: scale(1.2); }
+    radial-gradient(ellipse 70vw 70vh at 50% 60%, transparent, rgba(15,13,12,.6) 55%, var(--bg) 95%),
+    linear-gradient(180deg, rgba(15,13,12,.55) 0%, rgba(15,13,12,.92) 100%);
 }
 
+.hero-eyebrow {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 4px;
+  color: var(--red);
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+.hero-eyebrow .dot {
+  display: inline-block;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--red);
+  box-shadow: 0 0 12px var(--red);
+  margin-inline-end: 8px;
+  vertical-align: 1px;
+  animation: pulse 1.4s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: .5; transform: scale(.7); }
+}
 .hero-prompt {
   font-family: 'JetBrains Mono', monospace;
-  font-size: 13px; letter-spacing: 4px;
+  font-size: 12px; letter-spacing: 4px;
   color: var(--lemon);
-  margin-bottom: 16px;
+  margin-bottom: 18px;
   direction: ltr;
 }
 .hero-prompt .cursor {
@@ -159,337 +189,309 @@ body {
   animation: blink 1.05s steps(2, start) infinite;
 }
 @keyframes blink { to { opacity: 0; } }
+
 .hero-title {
-  font-size: clamp(36px, 5.5vw, 64px);
+  font-family: 'Heebo', 'Barlow', sans-serif;
   font-weight: 900;
-  letter-spacing: -1px;
-  line-height: 1.05;
-  margin-bottom: 12px;
+  font-size: clamp(38px, 6.2vw, 78px);
+  letter-spacing: -1.5px;
+  line-height: 1.02;
+  margin-bottom: 16px;
   color: var(--ink);
 }
-.hero-title .accent {
-  color: var(--lemon);
-  display: inline-block;
-  position: relative;
-}
-.hero-title .accent::after {
-  content: '';
-  position: absolute;
-  inset-inline-start: 0; bottom: -3px;
-  width: 100%; height: 3px;
-  background: var(--lemon);
-  opacity: .55;
-  border-radius: 2px;
-}
+.hero-title .accent { color: var(--orange); }
+
 .hero-sub {
-  color: var(--ink-dim);
-  font-size: clamp(14px, 1.5vw, 16px);
-  max-width: 520px;
-  margin-bottom: 28px;
+  font-family: 'Open Sans', sans-serif;
+  color: var(--ink-soft);
+  font-size: clamp(15px, 1.55vw, 18px);
+  max-width: 560px;
+  margin-bottom: 32px;
+  opacity: .85;
 }
-.hero-cta {
-  display: inline-flex; align-items: center; gap: 8px;
+
+/* klei orange pill CTA */
+.cta-orange {
+  display: inline-flex; align-items: center; gap: 10px;
   padding: 14px 30px;
-  background: var(--lemon);
-  color: #000;
-  font-weight: 900;
-  font-size: 15px;
-  letter-spacing: .3px;
+  background: var(--orange);
+  color: #fff;
+  font-family: 'Barlow', sans-serif;
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
   text-decoration: none;
-  border-radius: 999px;
-  border: 2px solid #000;
-  box-shadow: 0 4px 0 var(--lemon-dim), 0 10px 30px -8px rgba(250,204,21,.5);
-  transition: all .15s;
-}
-.hero-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 0 var(--lemon-dim), 0 14px 36px -8px rgba(250,204,21,.65); }
-.hero-cta:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--lemon-dim); }
-.hero-cta .arrow { transition: transform .2s; }
-.hero-cta:hover .arrow { transform: translateX(-4px); }
-
-/* mini strip of game thumbs (klei-style) */
-.hero-strip {
-  margin-top: 36px;
-  display: flex; gap: 10px;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  max-width: 720px;
-}
-.hero-strip .thumb {
-  width: 76px; height: 50px;
-  border-radius: 6px;
-  background-size: cover;
-  background-position: center;
-  border: 1px solid var(--line);
-  opacity: .7;
-  transition: all .2s;
+  border-radius: 4px;
+  border: none;
   cursor: pointer;
+  transition: all .18s;
+  box-shadow: 0 6px 22px -8px rgba(241,103,57,.6);
 }
-.hero-strip .thumb:hover {
-  opacity: 1;
-  border-color: var(--line-hi);
-  transform: translateY(-3px) scale(1.06);
-}
+.cta-orange:hover { background: var(--orange-2); transform: translateY(-2px); box-shadow: 0 10px 28px -8px rgba(241,103,57,.75); }
+.cta-orange:active { transform: translateY(1px); }
+.cta-orange .arrow { transition: transform .2s; }
+.cta-orange:hover .arrow { transform: translateX(-4px); }
 
-/* ────────── SECTION TITLE (klei: bold caps left-aligned) ────────── */
-.section-wrap {
-  max-width: 1240px;
+/* ─────────────────────────── SECTION (klei) ─────────────────────────── */
+.section {
+  max-width: 1320px;
   margin: 0 auto;
-  padding: 60px 28px;
+  padding: 80px 32px;
 }
 .section-head {
-  display: flex; align-items: end; justify-content: space-between;
-  gap: 18px; flex-wrap: wrap;
-  margin-bottom: 30px;
-  padding-bottom: 18px;
-  border-bottom: 1px solid var(--line);
+  text-align: center;
+  margin-bottom: 50px;
 }
 .section-title {
-  font-size: clamp(24px, 3.4vw, 34px);
+  font-family: 'Barlow', sans-serif;
   font-weight: 900;
-  letter-spacing: -.4px;
+  font-size: clamp(28px, 4vw, 44px);
+  letter-spacing: -.5px;
   color: var(--ink);
-}
-.section-title .count {
-  color: var(--lemon);
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: 700;
-  font-size: .55em;
-  margin-inline-start: 10px;
-  vertical-align: middle;
-  letter-spacing: 2px;
-}
-.section-sub {
-  color: var(--ink-mute);
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 2px;
+  margin-bottom: 10px;
   text-transform: uppercase;
 }
+.section-title .accent {
+  color: var(--orange);
+  position: relative;
+  display: inline-block;
+}
+.section-title .accent::after {
+  content: '';
+  position: absolute;
+  inset-inline-start: 0;
+  bottom: -4px;
+  width: 100%; height: 4px;
+  background: var(--orange);
+  border-radius: 2px;
+}
+.section-sub {
+  font-family: 'Open Sans', sans-serif;
+  color: var(--ink-mute);
+  font-size: 15px;
+}
 
-/* ────────── GAMES GRID (klei: 3 cols, 16:9 tiles) ────────── */
+/* ─────────────────────────── GAMES GRID (klei featured grid) ─────────────────────────── */
 .games-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
+  gap: 24px;
 }
-@media (max-width: 960px) { .games-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 600px) { .games-grid { grid-template-columns: 1fr; gap: 14px; } }
+@media (max-width: 980px) { .games-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .games-grid { grid-template-columns: 1fr; gap: 16px; } .section { padding: 60px 18px; } }
 
 .game {
   position: relative;
   display: block;
-  text-decoration: none; color: inherit;
-  border-radius: 10px;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 8px;
   overflow: hidden;
   aspect-ratio: 16 / 9;
   background: var(--bg-card);
-  border: 1px solid var(--line);
-  transition: transform .3s cubic-bezier(.2,.7,.2,1), border-color .2s, box-shadow .25s;
+  box-shadow: 0 4px 16px rgba(0,0,0,.4);
   isolation: isolate;
+  transition: transform .3s cubic-bezier(.2,.7,.2,1), box-shadow .25s;
+  cursor: pointer;
 }
 .game-art {
   position: absolute; inset: 0; z-index: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
   background-size: cover;
   background-position: center;
-  transition: transform .9s cubic-bezier(.2,.7,.2,1), filter .35s;
-  filter: saturate(.9) brightness(.85);
-  animation: drift 18s ease-in-out infinite alternate;
+  transition: transform .7s cubic-bezier(.2,.7,.2,1), filter .35s;
+  filter: saturate(.92) brightness(.88);
 }
-@keyframes drift {
-  0%   { transform: scale(1.02) translate(0, 0); }
-  100% { transform: scale(1.05) translate(1%, -1%); }
-}
-.game:nth-child(2n) .game-art { animation-duration: 22s; animation-delay: -6s; }
-.game:nth-child(3n) .game-art { animation-duration: 26s; animation-delay: -12s; }
+video.game-art { pointer-events: none; }
+
 .game-shade {
   position: absolute; inset: 0; z-index: 1;
-  background:
-    linear-gradient(to top, rgba(0,0,0,.85) 0%, rgba(0,0,0,.30) 45%, transparent 80%);
+  background: linear-gradient(to top, rgba(15,13,12,.92) 0%, rgba(15,13,12,.40) 40%, rgba(15,13,12,0) 75%);
   transition: opacity .3s;
 }
 .game-content {
   position: absolute; inset: 0; z-index: 2;
-  padding: 14px 16px;
+  padding: 22px 22px 20px;
   display: flex; flex-direction: column; justify-content: end;
 }
-.game-titles {
-  display: flex; flex-direction: column; gap: 2px;
+.game-eyebrow {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 6px;
+  text-shadow: 0 2px 8px rgba(0,0,0,.7);
+}
+.game-eyebrow.lesson { color: #93c5fd; }
+.game-eyebrow.guest { color: var(--red); }
+.game-title {
+  font-family: 'Heebo', sans-serif;
+  font-weight: 900;
+  font-size: clamp(20px, 2.3vw, 28px);
+  line-height: 1.05;
+  color: var(--ink);
+  text-shadow: 0 2px 14px rgba(0,0,0,.85);
+  margin-bottom: 6px;
 }
 .game-en {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 9px;
-  letter-spacing: 2.2px;
-  color: var(--lemon);
-  direction: ltr;
-  text-shadow: 0 1px 6px rgba(0,0,0,.85);
-}
-.game-title {
-  font-size: 19px;
-  font-weight: 900;
-  letter-spacing: -.3px;
-  color: var(--ink);
-  line-height: 1.1;
-  text-shadow: 0 2px 12px rgba(0,0,0,.85);
-}
-.game-tag {
-  position: absolute;
-  top: 12px; inset-inline-start: 12px;
-  display: inline-flex; align-items: center; gap: 5px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 9px;
-  letter-spacing: 1.5px;
-  padding: 4px 8px;
-  background: rgba(11,11,15,.78);
-  border: 1px solid var(--line);
-  border-radius: 4px;
-  color: var(--lemon);
+  font-family: 'Barlow', sans-serif;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: 2px;
+  color: var(--ink-mute);
   text-transform: uppercase;
-  backdrop-filter: blur(4px);
-}
-.game-tag.lesson  { color: #93c5fd; border-color: rgba(147,197,253,.3); }
-.game-tag.guest   { color: var(--tag-red); border-color: rgba(248,113,113,.3); }
-.game-tag .dot {
-  width: 5px; height: 5px;
-  border-radius: 50%;
-  background: currentColor;
-  box-shadow: 0 0 6px currentColor;
-}
-.game:hover { border-color: var(--line-hi); transform: translateY(-4px); box-shadow: 0 22px 50px -22px rgba(250,204,21,.35); }
-.game:hover .game-art { transform: scale(1.06); filter: saturate(1.05) brightness(1); }
-.game:hover .game-shade { opacity: .75; }
-
-/* per-game backgrounds */
-.game[data-id="lions-roar"]            .game-art { background-image: url('assets/screens/lions-roar.png'); }
-.game[data-id="Magnetic-Mission"]      .game-art { background-image: url('assets/screens/Magnetic-Mission.png'); }
-.game[data-id="break-the-word"]        .game-art { background-image: url('assets/screens/break-the-word.png'); }
-.game[data-id="geography-puzzle-game"] .game-art { background-image: url('assets/screens/geography-puzzle-game.png'); }
-.game[data-id="young-investor"]        .game-art {
-  background-image: url('assets/screens/young-investor.png');
-  background-size: 165%;
-  background-position: center 38%;
-}
-.game[data-id="tap-and-pop"]           .game-art {
-  background-image: url('assets/screens/tap-and-pop.png');
-  background-size: 145%;
-  background-position: center 48%;
-}
-.game[data-id="mini-metro-lesson"]     .game-art { background-image: url('assets/screens/mini-metro-lesson.png'); }
-
-/* If there are 7 games (last one orphaned in a 3-col row), center it */
-@media (min-width: 961px) {
-  .games-grid .game:last-child:nth-child(3n + 1) {
-    grid-column: 2 / 3;
-  }
-}
-@media (min-width: 601px) and (max-width: 960px) {
-  .games-grid .game:last-child:nth-child(2n + 1) {
-    grid-column: 1 / 3;
-    aspect-ratio: 21 / 9;
-  }
+  direction: ltr;
+  text-shadow: 0 1px 6px rgba(0,0,0,.7);
 }
 
-/* ────────── MANIFESTO STRIP (klei: WE PUBLISH GAMES TOO style) ────────── */
+.game:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 40px -12px rgba(0,0,0,.7), 0 0 0 1px var(--line-hi);
+}
+.game:hover .game-art {
+  transform: scale(1.05);
+  filter: saturate(1) brightness(1);
+}
+.game:hover .game-shade { opacity: .8; }
+
+/* Image fallback when video isn't loaded yet */
+.game[data-id="lions-roar"]            .game-art.fallback { background-image: url('assets/screens/lions-roar.png'); }
+.game[data-id="Magnetic-Mission"]      .game-art.fallback { background-image: url('assets/screens/Magnetic-Mission.png'); }
+.game[data-id="break-the-word"]        .game-art.fallback { background-image: url('assets/screens/break-the-word.png'); }
+.game[data-id="geography-puzzle-game"] .game-art.fallback { background-image: url('assets/screens/geography-puzzle-game.png'); }
+.game[data-id="young-investor"]        .game-art.fallback { background-image: url('assets/screens/young-investor.png'); background-size: 165%; background-position: center 38%; }
+.game[data-id="tap-and-pop"]           .game-art.fallback { background-image: url('assets/screens/tap-and-pop.png'); background-size: 145%; background-position: center 48%; }
+.game[data-id="mini-metro-lesson"]     .game-art.fallback { background-image: url('assets/screens/mini-metro-lesson.png'); }
+
+/* Last orphan tile in 3-col grid → center it */
+@media (min-width: 981px) {
+  .games-grid .game:last-child:nth-child(3n + 1) { grid-column: 2 / 3; }
+}
+
+/* ─────────────────────────── MANIFESTO STRIP (klei "publish" pattern) ─────────────────────────── */
 .manifesto {
   position: relative;
-  margin: 60px auto;
-  max-width: 1240px;
-  border-radius: 16px;
+  max-width: 1320px;
+  margin: 30px auto 80px;
+  border-radius: 12px;
   overflow: hidden;
   isolation: isolate;
-  border: 1px solid var(--line);
 }
 .manifesto-bg {
   position: absolute; inset: 0; z-index: -1;
   background:
-    radial-gradient(ellipse 60% 80% at 15% 50%, rgba(250,204,21,.18), transparent 60%),
-    radial-gradient(ellipse 60% 80% at 85% 50%, rgba(167,127,10,.14), transparent 60%),
-    linear-gradient(135deg, #1f1b07 0%, #15151c 100%);
+    radial-gradient(ellipse 50% 80% at 18% 50%, rgba(250,204,21,.18), transparent 65%),
+    radial-gradient(ellipse 50% 80% at 82% 50%, rgba(241,103,57,.16), transparent 65%),
+    linear-gradient(135deg, #1f1a14 0%, #221D1A 100%);
 }
 .manifesto-inner {
   display: grid;
-  grid-template-columns: 1fr 1.4fr;
-  gap: 32px;
+  grid-template-columns: 0.9fr 1.4fr;
+  gap: 36px;
   align-items: center;
-  padding: 50px 40px;
+  padding: 56px 48px;
 }
 .manifesto-icon {
   text-align: center;
-  font-size: 100px;
+  font-size: 120px;
   line-height: 1;
-  filter: drop-shadow(0 14px 30px rgba(250,204,21,.45));
+  filter: drop-shadow(0 16px 36px rgba(250,204,21,.45));
   animation: bob 4s ease-in-out infinite;
 }
 @keyframes bob {
-  0%, 100% { transform: translateY(0) rotate(-3deg); }
-  50%      { transform: translateY(-10px) rotate(3deg); }
+  0%, 100% { transform: translateY(0) rotate(-4deg); }
+  50%      { transform: translateY(-12px) rotate(4deg); }
 }
-.manifesto-text .eyebrow {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px; letter-spacing: 3px;
+.manifesto-eyebrow {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
   color: var(--lemon);
   margin-bottom: 14px;
 }
-.manifesto-text h2 {
-  font-size: clamp(28px, 4.2vw, 44px);
+.manifesto-title {
+  font-family: 'Barlow', sans-serif;
   font-weight: 900;
+  font-size: clamp(28px, 4.4vw, 48px);
   letter-spacing: -.5px;
-  line-height: 1.1;
-  margin-bottom: 16px;
+  line-height: 1.05;
+  color: var(--ink);
+  margin-bottom: 18px;
+  text-transform: uppercase;
   direction: ltr;
   unicode-bidi: plaintext;
-  color: var(--ink);
 }
-.manifesto-text h2 .accent { color: var(--lemon); }
+.manifesto-title .accent {
+  color: var(--lemon);
+  position: relative;
+  display: inline-block;
+}
+.manifesto-title .accent::after {
+  content: '';
+  position: absolute;
+  inset-inline-start: 0; bottom: -4px;
+  width: 100%; height: 4px;
+  background: var(--lemon);
+  border-radius: 2px;
+}
 .manifesto-text p {
-  color: var(--ink-dim);
+  font-family: 'Open Sans', sans-serif;
+  color: var(--ink-soft);
   font-size: clamp(15px, 1.4vw, 17px);
-  max-width: 580px;
+  max-width: 620px;
+  opacity: .9;
 }
 @media (max-width: 760px) {
-  .manifesto-inner { grid-template-columns: 1fr; text-align: center; padding: 40px 24px; gap: 18px; }
-  .manifesto-icon { font-size: 76px; }
+  .manifesto-inner { grid-template-columns: 1fr; text-align: center; padding: 44px 24px; gap: 18px; }
+  .manifesto-icon { font-size: 90px; }
   .manifesto-text p { max-width: none; }
 }
 
-/* ────────── FOOTER ────────── */
+/* ─────────────────────────── FOOTER (klei) ─────────────────────────── */
 footer {
+  background: var(--bg-section);
   border-top: 1px solid var(--line);
-  padding: 40px 28px 36px;
+  padding: 50px 32px 40px;
+}
+.footer-inner {
+  max-width: 1320px;
+  margin: 0 auto;
   display: flex; align-items: center; justify-content: space-between;
-  max-width: 1240px;
-  margin: 60px auto 0;
-  flex-wrap: wrap;
-  gap: 18px;
+  flex-wrap: wrap; gap: 20px;
 }
-footer .footer-brand {
-  display: flex; align-items: center; gap: 10px;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
+.footer-brand {
+  display: flex; align-items: center; gap: 12px;
+}
+.footer-brand img { width: 36px; height: 36px; border-radius: 6px; opacity: .85; }
+.footer-brand .name {
+  font-family: 'Barlow', sans-serif;
+  font-weight: 800; font-size: 14px;
   letter-spacing: 2px;
+  color: var(--lemon);
+}
+.footer-meta {
+  font-family: 'Barlow', sans-serif;
+  font-size: 12px; letter-spacing: 1.5px;
   color: var(--ink-mute);
+  text-transform: uppercase;
 }
-footer .footer-brand img { width: 28px; height: 28px; border-radius: 4px; opacity: .7; }
-footer .footer-meta {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 1.5px;
-  color: var(--ink-mute);
-}
-footer .footer-meta .lemon-bounce {
-  display: inline-block;
-  animation: heartbeat 2s ease-in-out infinite;
-}
+.footer-meta .lemon { display: inline-block; animation: heartbeat 2s ease-in-out infinite; }
 @keyframes heartbeat {
   0%, 100% { transform: scale(1); }
-  50%      { transform: scale(1.18); }
+  50%      { transform: scale(1.2); }
 }
 
 </style>
 </head>
 <body>
 
-<header class="site-header" id="header">
+<header class="site-header">
   <a class="brand" href="/">
     <img src="assets/logo.jpg" alt="">
     <span class="brand-text">LEMONS GAMING</span>
@@ -502,160 +504,130 @@ footer .footer-meta .lemon-bounce {
 
 <section class="hero">
   <div class="hero-bg"></div>
-  <div class="hero-overlay"></div>
-  <div class="hero-stars" id="hero-stars"></div>
+  <div class="hero-shade"></div>
+  <div class="hero-eyebrow"><span class="dot"></span>NOW PLAYING · 07 TITLES</div>
   <div class="hero-prompt">PRESS&nbsp;START<span class="cursor"></span></div>
   <h1 class="hero-title">משחקים <span class="accent">ללמידה</span> ולכיף</h1>
-  <p class="hero-sub">אוסף משחקי דפדפן — קריאה, אקשן, גיאוגרפיה, פיזיקה, אסטרטגיה. כל אחד יושב על שאלה לימודית אחת, וכל אחד גם כיף לשחק בו.</p>
-  <a href="#games" class="hero-cta">לחדר המשחקים <span class="arrow">←</span></a>
-
-  <div class="hero-strip" id="hero-strip"></div>
+  <p class="hero-sub">אוסף משחקי דפדפן שרצים בלי התקנות. כל אחד יושב על שאלה לימודית — קריאה, אקשן, גיאוגרפיה, פיזיקה, אסטרטגיה.</p>
+  <a href="#games" class="cta-orange">Play Now <span class="arrow">←</span></a>
 </section>
 
-<div class="section-wrap" id="games">
+<section class="section" id="games">
   <header class="section-head">
-    <h2 class="section-title">המשחקים<span class="count">07 //</span></h2>
-    <p class="section-sub">// Select your game</p>
+    <h2 class="section-title">Featured <span class="accent">Games</span></h2>
+    <p class="section-sub">7 כותרים פעילים · קליק אחד וזה בדפדפן</p>
   </header>
 
   <div class="games-grid">
 
     <a class="game" data-id="lions-roar" data-game="lions-roar" href="https://lemons-gaming.github.io/lions-roar/" target="_blank" rel="noopener">
-      <div class="game-art"></div>
+      <video class="game-art" autoplay loop muted playsinline preload="metadata" poster="assets/screens/lions-roar.png">
+        <source src="assets/videos/lions-roar.mp4" type="video/mp4">
+      </video>
       <div class="game-shade"></div>
-      <span class="game-tag"><span class="dot"></span>Action</span>
       <div class="game-content">
-        <div class="game-titles">
-          <div class="game-en">LION'S ROAR</div>
-          <div class="game-title">שאגת הארי</div>
-        </div>
+        <div class="game-eyebrow">Action</div>
+        <h3 class="game-title">שאגת הארי</h3>
+        <div class="game-en">Lion's Roar</div>
       </div>
     </a>
 
     <a class="game" data-id="Magnetic-Mission" data-game="Magnetic-Mission" href="https://lemons-gaming.github.io/Magnetic-Mission/" target="_blank" rel="noopener">
-      <div class="game-art"></div>
+      <video class="game-art" autoplay loop muted playsinline preload="metadata" poster="assets/screens/Magnetic-Mission.png">
+        <source src="assets/videos/Magnetic-Mission.mp4" type="video/mp4">
+      </video>
       <div class="game-shade"></div>
-      <span class="game-tag"><span class="dot"></span>Physics · י"ב</span>
       <div class="game-content">
-        <div class="game-titles">
-          <div class="game-en">MAGNETIC MISSION</div>
-          <div class="game-title">המשימה המגנטית</div>
-        </div>
+        <div class="game-eyebrow">Physics · י"ב</div>
+        <h3 class="game-title">המשימה המגנטית</h3>
+        <div class="game-en">Magnetic Mission</div>
       </div>
     </a>
 
     <a class="game" data-id="break-the-word" data-game="break-the-word" href="https://lemons-gaming.github.io/break-the-word/" target="_blank" rel="noopener">
-      <div class="game-art"></div>
+      <video class="game-art" autoplay loop muted playsinline preload="metadata" poster="assets/screens/break-the-word.png">
+        <source src="assets/videos/break-the-word.mp4" type="video/mp4">
+      </video>
       <div class="game-shade"></div>
-      <span class="game-tag"><span class="dot"></span>Reading</span>
       <div class="game-content">
-        <div class="game-titles">
-          <div class="game-en">BREAK THE WORD</div>
-          <div class="game-title">שבור את המילה</div>
-        </div>
+        <div class="game-eyebrow">Reading</div>
+        <h3 class="game-title">שבור את המילה</h3>
+        <div class="game-en">Break the Word</div>
       </div>
     </a>
 
     <a class="game" data-id="geography-puzzle-game" data-game="geography-puzzle-game" href="https://lemons-gaming.github.io/geography-puzzle-game/" target="_blank" rel="noopener">
-      <div class="game-art"></div>
+      <video class="game-art" autoplay loop muted playsinline preload="metadata" poster="assets/screens/geography-puzzle-game.png">
+        <source src="assets/videos/geography-puzzle-game.mp4" type="video/mp4">
+      </video>
       <div class="game-shade"></div>
-      <span class="game-tag"><span class="dot"></span>Geography</span>
       <div class="game-content">
-        <div class="game-titles">
-          <div class="game-en">GEO PUZZLE</div>
-          <div class="game-title">פאזל גיאוגרפי</div>
-        </div>
+        <div class="game-eyebrow">Geography</div>
+        <h3 class="game-title">פאזל גיאוגרפי</h3>
+        <div class="game-en">Geo Puzzle</div>
       </div>
     </a>
 
     <a class="game" data-id="young-investor" data-game="young-investor" href="https://liluo.io/lemonsgaming/theyounginvestor" target="_blank" rel="noopener">
-      <div class="game-art"></div>
+      <div class="game-art fallback"></div>
       <div class="game-shade"></div>
-      <span class="game-tag guest"><span class="dot"></span>Guest · liluo.io</span>
       <div class="game-content">
-        <div class="game-titles">
-          <div class="game-en">THE YOUNG INVESTOR</div>
-          <div class="game-title">המשקיעים הצעירים</div>
-        </div>
+        <div class="game-eyebrow guest">Guest · liluo.io</div>
+        <h3 class="game-title">המשקיעים הצעירים</h3>
+        <div class="game-en">The Young Investor</div>
       </div>
     </a>
 
     <a class="game" data-id="tap-and-pop" data-game="tap-and-pop" href="https://lemons-gaming.github.io/tap-and-pop/" target="_blank" rel="noopener">
-      <div class="game-art"></div>
+      <video class="game-art" autoplay loop muted playsinline preload="metadata" poster="assets/screens/tap-and-pop.png">
+        <source src="assets/videos/tap-and-pop.mp4" type="video/mp4">
+      </video>
       <div class="game-shade"></div>
-      <span class="game-tag"><span class="dot"></span>Reflex</span>
       <div class="game-content">
-        <div class="game-titles">
-          <div class="game-en">SPOT THE SHAPE</div>
-          <div class="game-title">מצא את הצורה</div>
-        </div>
+        <div class="game-eyebrow">Reflex</div>
+        <h3 class="game-title">מצא את הצורה</h3>
+        <div class="game-en">Spot the Shape</div>
       </div>
     </a>
 
     <a class="game" data-id="mini-metro-lesson" data-game="mini-metro-lesson" href="https://lemons-gaming.github.io/mini-metro-lesson/" target="_blank" rel="noopener">
-      <div class="game-art"></div>
+      <video class="game-art" autoplay loop muted playsinline preload="metadata" poster="assets/screens/mini-metro-lesson.png">
+        <source src="assets/videos/mini-metro-lesson.mp4" type="video/mp4">
+      </video>
       <div class="game-shade"></div>
-      <span class="game-tag lesson"><span class="dot"></span>Lesson Plan</span>
       <div class="game-content">
-        <div class="game-titles">
-          <div class="game-en">MINI METRO LESSON</div>
-          <div class="game-title">Mini Metro</div>
-        </div>
+        <div class="game-eyebrow lesson">Lesson Plan</div>
+        <h3 class="game-title">Mini Metro</h3>
+        <div class="game-en">Lesson Plan</div>
       </div>
     </a>
 
   </div>
-</div>
+</section>
 
 <section class="manifesto" id="manifesto">
   <div class="manifesto-bg"></div>
   <div class="manifesto-inner">
     <div class="manifesto-icon">🍋</div>
     <div class="manifesto-text">
-      <div class="eyebrow">// MANIFESTO</div>
-      <h2>Gaming&nbsp;<span class="accent">Is</span>&nbsp;Learning</h2>
+      <div class="manifesto-eyebrow">// Manifesto</div>
+      <h2 class="manifesto-title">Gaming <span class="accent">Is</span> Learning</h2>
       <p>בין אם מדובר בתוכן לימודי, או במיומנויות מוטוריות, חברתיות או קוגניטיביות — כל משחק הוא בעצם מערכת לימוד מוסווית. ב-Lemons Gaming אנחנו לוקחים את ההסוואה ברצינות.</p>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="footer-brand">
-    <img src="assets/logo.jpg" alt="">
-    <span>LEMONS GAMING</span>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="assets/logo.jpg" alt="">
+      <span class="name">LEMONS GAMING</span>
+    </div>
+    <div class="footer-meta">© 2026 · Made with <span class="lemon">🍋</span></div>
   </div>
-  <div class="footer-meta">© 2026 · MADE WITH <span class="lemon-bounce">🍋</span></div>
 </footer>
 
 <script>
-  // Twinkling stars
-  (function () {
-    const wrap = document.getElementById('hero-stars');
-    for (let i = 0; i < 40; i++) {
-      const s = document.createElement('span');
-      const sz = Math.random() * 1.8 + .7;
-      s.style.width = s.style.height = sz + 'px';
-      s.style.left = Math.random() * 100 + 'vw';
-      s.style.top  = Math.random() * 100 + '%';
-      s.style.animationDelay = (Math.random() * 4) + 's';
-      wrap.appendChild(s);
-    }
-  })();
-
-  // Build hero thumbnail strip from grid
-  (function () {
-    const strip = document.getElementById('hero-strip');
-    const ids = ['lions-roar','Magnetic-Mission','break-the-word','geography-puzzle-game','young-investor','tap-and-pop','mini-metro-lesson'];
-    ids.forEach(id => {
-      const a = document.createElement('a');
-      a.href = '#games';
-      a.className = 'thumb';
-      a.style.backgroundImage = `url('assets/screens/${id}.png')`;
-      a.title = id;
-      strip.appendChild(a);
-    });
-  })();
-
   // GA4: track game card clicks
   document.querySelectorAll('.game[data-game]').forEach(card => {
     card.addEventListener('click', () => {
@@ -667,8 +639,16 @@ footer .footer-meta .lemon-bounce {
       }
     });
   });
-  document.querySelector('.hero-cta')?.addEventListener('click', () => {
+  document.querySelector('.cta-orange')?.addEventListener('click', () => {
     if (typeof gtag === 'function') gtag('event', 'hero_cta_clicked', { game_name: 'portfolio' });
+  });
+
+  // Pause video on hidden page (battery save)
+  document.addEventListener('visibilitychange', () => {
+    document.querySelectorAll('video').forEach(v => {
+      if (document.hidden) v.pause();
+      else v.play().catch(()=>{});
+    });
   });
 </script>
 
