@@ -254,42 +254,45 @@ body {
 .cta-orange .arrow { transition: transform .2s; display: inline-block; }
 .cta-orange:hover .arrow { transform: translateX(-4px); }
 
+/* Klei-style square nav arrows: solid black 40x40, orange angular icon */
 .hero-arrow {
-  position: absolute;
-  top: calc(50% - 60px); transform: translateY(-50%);
-  z-index: 10;
-  width: 48px; height: 48px;
-  background: rgba(15,13,12,.55);
-  border: 1px solid var(--line);
-  color: var(--ink);
-  font-size: 22px;
-  border-radius: 50%;
+  width: 40px; height: 40px;
+  background: #000;
+  border: none;
+  border-radius: 0;
+  color: var(--orange);
   cursor: pointer;
-  transition: all .15s;
-  display: grid; place-items: center;
-  backdrop-filter: blur(6px);
+  display: inline-flex; align-items: center; justify-content: center;
+  flex: 0 0 auto;
+  transition: background .15s, color .15s, transform .15s;
+  padding: 0;
 }
-.hero-arrow:hover { background: var(--orange); border-color: var(--orange); transform: translateY(-50%) scale(1.06); }
-.hero-arrow.prev { right: 28px; }
-.hero-arrow.next { left:  28px; }
+.hero-arrow:hover { background: var(--orange); color: #000; transform: translateY(-2px); }
+.hero-arrow:active { transform: translateY(0); }
+.hero-arrow svg { height: 18px; width: auto; display: block; }
+.hero-arrow.prev svg { transform: scaleX(-1); }
 @media (max-width: 700px) {
-  .hero-arrow { width: 40px; height: 40px; font-size: 18px; }
-  .hero-arrow.prev { right: 12px; }
-  .hero-arrow.next { left:  12px; }
+  .hero-arrow { width: 34px; height: 34px; }
+  .hero-arrow svg { height: 14px; }
 }
 
-/* KLEI-STYLE THUMB STRIP — 640px wide, overlapping hero by -64px */
+/* KLEI-STYLE THUMB STRIP — arrows now sit INSIDE this row, flanking the thumbs */
 .hero-thumbs {
   position: absolute;
   bottom: 0; left: 50%;
   transform: translateX(-50%);
   z-index: 6;
-  width: min(680px, 92vw);
+  width: min(820px, 96vw);
   height: 96px;
-  display: flex; gap: 8px;
+  display: flex; gap: 14px;
   align-items: center; justify-content: center;
   padding: 12px 0;
   direction: ltr;
+}
+.hero-thumbs-inner {
+  display: flex; gap: 8px;
+  align-items: center; justify-content: center;
+  flex: 0 1 auto;
 }
 .hero-thumb {
   width: 88px; height: 56px;
@@ -726,10 +729,19 @@ footer {
 
   </div>
 
-  <button class="hero-arrow prev" id="heroPrev" aria-label="Previous">→</button>
-  <button class="hero-arrow next" id="heroNext" aria-label="Next">←</button>
-
-  <div class="hero-thumbs" id="heroThumbs"></div>
+  <div class="hero-thumbs">
+    <button class="hero-arrow prev" id="heroPrev" aria-label="Previous">
+      <svg viewBox="0 0 16 22" aria-hidden="true">
+        <path fill="currentColor" d="M14 1.4L13 0.4L11 1.5L6 6L1.5 9.7L0 11L7 17.5L11 20L13 19L13.5 17L9 14L7 11.5L13 7L14 5.5L13 3.5L14 1.4Z" />
+      </svg>
+    </button>
+    <div class="hero-thumbs-inner" id="heroThumbs"></div>
+    <button class="hero-arrow next" id="heroNext" aria-label="Next">
+      <svg viewBox="0 0 16 22" aria-hidden="true">
+        <path fill="currentColor" d="M14 1.4L13 0.4L11 1.5L6 6L1.5 9.7L0 11L7 17.5L11 20L13 19L13.5 17L9 14L7 11.5L13 7L14 5.5L13 3.5L14 1.4Z" />
+      </svg>
+    </button>
+  </div>
 </section>
 
 <!-- ───── FEATURED GAMES ───── -->
