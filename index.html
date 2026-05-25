@@ -497,15 +497,32 @@ video.fcard-art { display: block; }
   padding: 56px 48px;
 }
 .manifesto-icon {
-  text-align: center;
-  font-size: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
   line-height: 1;
-  filter: drop-shadow(0 14px 30px rgba(250,204,21,.5));
-  animation: bob 4s ease-in-out infinite;
 }
-@keyframes bob {
-  0%, 100% { transform: translateY(0) rotate(-4deg); }
-  50%      { transform: translateY(-10px) rotate(4deg); }
+.manifesto-icon .dancer {
+  font-size: 96px;
+  display: inline-block;
+  line-height: 1;
+}
+.manifesto-icon .lemon-d {
+  filter: drop-shadow(0 14px 26px rgba(250,204,21,.55));
+  animation: dance-lemon 2.2s ease-in-out infinite;
+}
+.manifesto-icon .pad-d {
+  filter: drop-shadow(0 14px 26px rgba(241,103,57,.45));
+  animation: dance-pad 2.2s ease-in-out infinite;
+}
+@keyframes dance-lemon {
+  0%, 100% { transform: translateY(0) rotate(-10deg); }
+  50%      { transform: translateY(-16px) rotate(10deg); }
+}
+@keyframes dance-pad {
+  0%, 100% { transform: translateY(-16px) rotate(10deg); }
+  50%      { transform: translateY(0) rotate(-10deg); }
 }
 .manifesto-eyebrow {
   font-family: 'Barlow Condensed', sans-serif;
@@ -856,7 +873,10 @@ footer {
 <section class="manifesto" id="manifesto">
   <div class="manifesto-bg"></div>
   <div class="manifesto-inner">
-    <div class="manifesto-icon">🍋</div>
+    <div class="manifesto-icon">
+      <span class="dancer lemon-d">🍋</span>
+      <span class="dancer pad-d">🎮</span>
+    </div>
     <div class="manifesto-text">
       <div class="manifesto-eyebrow">// Manifesto</div>
       <h2 class="manifesto-title" lang="en" dir="ltr">Gaming <span class="accent">Is</span> Learning</h2>
