@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lemons Gaming · משחקים ללמידה ולכיף</title>
-<meta name="description" content="Lemons Gaming — משחקי דפדפן ללמידה ולכיף.">
+<title>Lemons Gaming · גיימינג — למידה שהיא חוויה</title>
+<meta name="description" content="Lemons Gaming — משחקי דפדפן ללמידה. גיימינג שהוא למידה — אוריינות פיננסית, עבודת צוות, פיזיקה, גיאוגרפיה.">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://lemons-gaming.github.io/">
-<meta property="og:title" content="Lemons Gaming · משחקים ללמידה ולכיף">
-<meta property="og:description" content="משחקי דפדפן ללמידה ולכיף. שחקו עכשיו.">
+<meta property="og:title" content="Lemons Gaming · גיימינג שהוא למידה">
+<meta property="og:description" content="כל משחק הוא בעצם למידה. שחקו עכשיו.">
 <meta property="og:image" content="https://lemons-gaming.github.io/assets/logo.jpg">
 <meta property="og:locale" content="he_IL">
 <meta name="twitter:card" content="summary_large_image">
@@ -28,33 +28,31 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Barlow:wght@500;600;700;800;900&family=Open+Sans:wght@400;600;700&family=Heebo:wght@500;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Barlow:wght@500;600;700;800;900&family=Open+Sans:wght@400;600;700&family=Heebo:wght@500;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 /* =====================================================================
-   LEMONS GAMING · v6 — Pixel-faithful klei.com clone
+   LEMONS GAMING · v7 — Klei pixel-cloned
+   Tilted cards (-2°/+2°), black→white frame on hover, scale 1.05.
+   Logo overhangs the header. Thumb strip 640px with -mt-16 overlap.
    ===================================================================== */
 
 :root {
-  /* klei's exact palette (sampled from live site) */
-  --bg:        #221D1A;  /* body bg (klei's body color) */
+  --bg:        #221D1A;
   --bg-dark:   #161211;
   --bg-darker: #0F0D0C;
   --ink:       #FFFFFF;
   --ink-soft:  #E0E0E0;
   --ink-mute:  rgba(255,255,255,.5);
-  --orange:    #F16739;  /* klei CTA */
+  --orange:    #F16739;
   --orange-2:  #F47A4F;
-  --red:       #FF253A;  /* klei "NEW" red */
-  --lemon:     #facc15;  /* OUR brand accent */
+  --red:       #FF253A;
+  --lemon:     #facc15;
   --line:      rgba(255,255,255,.08);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html, body {
-  overflow-x: hidden;
-  max-width: 100vw;
-}
+html, body { overflow-x: hidden; max-width: 100vw; }
 html { scroll-behavior: smooth; }
 body {
   font-family: 'Open Sans', system-ui, sans-serif;
@@ -66,67 +64,99 @@ body {
 }
 
 /* =====================================================================
-   HEADER (klei copy — fixed dark, caps nav)
+   HEADER (klei-tall, logo overhanging)
    ===================================================================== */
 .site-header {
   position: fixed; top: 0; inset-inline: 0; z-index: 100;
-  height: 72px;
+  height: 110px;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 0 32px;
-  background: rgba(15, 13, 12, .96);
-  border-bottom: 1px solid var(--line);
+  padding: 0 40px;
+  background: rgba(15, 13, 12, .92);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
+.site-header::after {
+  content: '';
+  position: absolute; bottom: 0; inset-inline: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--line), transparent);
+}
 .brand {
-  display: flex; align-items: center; gap: 14px;
+  display: flex; align-items: center; gap: 16px;
   text-decoration: none; color: inherit;
+  /* logo overhangs the header bottom */
+  position: relative;
+  margin-bottom: -28px;
+  align-self: flex-end;
+  padding-bottom: 8px;
 }
 .brand img {
-  width: 44px; height: 44px;
-  border-radius: 6px;
+  width: 96px; height: 96px;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.5), 0 0 0 3px rgba(250,204,21,.32);
   object-fit: cover;
+  transition: transform .3s cubic-bezier(.5,1.5,.5,1);
+  background: var(--bg-darker);
 }
+.brand:hover img { transform: rotate(-3deg) scale(1.04); }
 .brand-text {
+  display: flex; flex-direction: column; line-height: 1;
+  align-self: center;
+  padding-bottom: 20px;
+}
+.brand-text .name {
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 900;
-  font-size: 22px;
+  font-size: 28px;
   letter-spacing: 2px;
   color: var(--lemon);
   text-transform: uppercase;
-  line-height: 1;
 }
-.nav-links { display: flex; gap: 28px; list-style: none; align-items: center; }
+.brand-text .tag {
+  font-family: 'Heebo', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 1px;
+  color: var(--ink-mute);
+  margin-top: 4px;
+}
+.nav-links {
+  display: flex; gap: 32px; list-style: none; align-items: center;
+  align-self: center;
+  padding-top: 6px;
+}
 .nav-links a {
   font-family: 'Barlow', sans-serif;
   color: var(--ink);
   text-decoration: none;
-  font-weight: 700; font-size: 13px;
-  letter-spacing: 1.5px;
+  font-weight: 700; font-size: 14px;
+  letter-spacing: 1.8px;
   text-transform: uppercase;
   transition: color .15s;
 }
 .nav-links a:hover { color: var(--orange); }
-@media (max-width: 700px) {
-  .site-header { padding: 0 16px; height: 60px; }
-  .brand img { width: 38px; height: 38px; }
-  .brand-text { font-size: 18px; letter-spacing: 1.5px; }
+@media (max-width: 760px) {
+  .site-header { padding: 0 18px; height: 90px; }
+  .brand img { width: 76px; height: 76px; }
+  .brand-text .name { font-size: 22px; }
+  .brand-text .tag { font-size: 11px; }
   .nav-links { gap: 18px; }
-  .nav-links a { font-size: 12px; letter-spacing: 1px; }
+  .nav-links a { font-size: 12px; letter-spacing: 1.2px; }
+  .brand { margin-bottom: -20px; }
 }
 
 /* =====================================================================
-   HERO CAROUSEL — 7 slides, one per game, autoplay video bg
+   HERO CAROUSEL
    ===================================================================== */
 .hero {
   position: relative;
-  top: 72px;
-  height: calc(100vh - 72px);
-  min-height: 560px;
+  top: 110px;
+  height: calc(100vh - 110px);
+  min-height: 580px;
   max-height: 820px;
   overflow: hidden;
   background: var(--bg-darker);
-  direction: ltr; /* keep transform math simple */
+  direction: ltr;
 }
 .hero-track {
   display: flex;
@@ -145,25 +175,20 @@ body {
   background-size: cover;
   background-position: center;
   z-index: 0;
-}
-.slide video.slide-bg {
   width: 100%; height: 100%;
   object-fit: cover;
 }
 .slide-shade {
   position: absolute; inset: 0; z-index: 1;
   background:
-    linear-gradient(to bottom, rgba(15,13,12,.35) 0%, rgba(15,13,12,.55) 60%, rgba(15,13,12,.92) 100%),
-    linear-gradient(to top right, rgba(15,13,12,.5), transparent 60%);
+    linear-gradient(to bottom, rgba(15,13,12,.30) 0%, rgba(15,13,12,.55) 55%, rgba(15,13,12,.95) 100%),
+    linear-gradient(to top right, rgba(15,13,12,.6), transparent 65%);
 }
 .slide-content {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: flex-end;
+  position: absolute; inset: 0; z-index: 2;
+  display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
   text-align: center;
-  padding: 0 32px 130px;
+  padding: 0 32px 160px;
   direction: rtl;
 }
 .slide-eyebrow {
@@ -193,18 +218,13 @@ body {
 .slide-title {
   font-family: 'Heebo', 'Barlow Condensed', sans-serif;
   font-weight: 900;
-  font-size: clamp(48px, 7vw, 96px);
+  font-size: clamp(48px, 7vw, 92px);
   line-height: .95;
   letter-spacing: -2px;
   color: #fff;
   margin-bottom: 18px;
   text-shadow: 0 4px 24px rgba(0,0,0,.7);
   text-transform: uppercase;
-}
-.slide-title.en {
-  font-family: 'Barlow Condensed', sans-serif;
-  letter-spacing: 1px;
-  direction: ltr;
 }
 .slide-sub {
   font-family: 'Open Sans', sans-serif;
@@ -213,13 +233,10 @@ body {
   max-width: 560px;
   margin-bottom: 26px;
   text-shadow: 0 2px 12px rgba(0,0,0,.7);
-  opacity: .95;
 }
-
-/* Klei orange pill CTA */
 .cta-orange {
   display: inline-flex; align-items: center; gap: 10px;
-  padding: 13px 28px;
+  padding: 13px 30px;
   background: var(--orange);
   color: #fff;
   font-family: 'Barlow Condensed', sans-serif;
@@ -237,10 +254,9 @@ body {
 .cta-orange .arrow { transition: transform .2s; display: inline-block; }
 .cta-orange:hover .arrow { transform: translateX(-4px); }
 
-/* Carousel arrows */
 .hero-arrow {
   position: absolute;
-  top: 50%; transform: translateY(-50%);
+  top: calc(50% - 60px); transform: translateY(-50%);
   z-index: 10;
   width: 48px; height: 48px;
   background: rgba(15,13,12,.55);
@@ -262,62 +278,74 @@ body {
   .hero-arrow.next { left:  12px; }
 }
 
-/* Thumbnail strip at the bottom of the hero (klei style) */
+/* KLEI-STYLE THUMB STRIP — 640px wide, overlapping hero by -64px */
 .hero-thumbs {
   position: absolute;
-  bottom: 22px; left: 50%;
+  bottom: 0; left: 50%;
   transform: translateX(-50%);
   z-index: 6;
+  width: min(680px, 92vw);
+  height: 96px;
   display: flex; gap: 8px;
+  align-items: center; justify-content: center;
+  padding: 12px 0;
   direction: ltr;
 }
 .hero-thumb {
-  width: 92px; height: 52px;
-  border-radius: 4px;
+  width: 88px; height: 56px;
+  border: 3px solid #000;
   background-size: cover;
   background-position: center;
-  border: 2px solid transparent;
-  opacity: .55;
   cursor: pointer;
-  transition: all .18s;
+  transition: all .25s cubic-bezier(.4, 0, .2, 1);
   position: relative;
+  flex: 0 0 auto;
 }
-.hero-thumb:hover { opacity: .9; transform: translateY(-3px); }
+.hero-thumb::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: rgba(15,13,12,.55);
+  transition: opacity .25s;
+}
+.hero-thumb:hover {
+  border-color: #fff;
+  transform: translateY(-4px);
+}
+.hero-thumb:hover::after { opacity: 0; }
 .hero-thumb.active {
-  opacity: 1;
-  border-color: var(--orange);
-  box-shadow: 0 0 0 3px rgba(241,103,57,.25), 0 6px 14px rgba(0,0,0,.45);
+  border-color: #fff;
+  transform: translateY(-6px) scale(1.06);
+  box-shadow: 0 8px 20px rgba(0,0,0,.6);
 }
+.hero-thumb.active::after { opacity: 0; }
 @media (max-width: 700px) {
-  .hero-thumb { width: 56px; height: 32px; }
+  .hero-thumb { width: 56px; height: 36px; border-width: 2px; }
+  .hero-thumbs { height: 76px; }
 }
 
-/* Per-slide bg images (poster fallback) + per-slide video sources */
-.slide[data-id="lions-roar"] .slide-bg.poster { background-image: url('assets/screens/lions-roar.png'); }
-.slide[data-id="Magnetic-Mission"] .slide-bg.poster { background-image: url('assets/screens/Magnetic-Mission.png'); }
-.slide[data-id="break-the-word"] .slide-bg.poster { background-image: url('assets/screens/break-the-word.png'); }
+/* Per-slide bg image (poster fallback) */
+.slide[data-id="lions-roar"]            .slide-bg.poster { background-image: url('assets/screens/lions-roar.png'); }
+.slide[data-id="Magnetic-Mission"]      .slide-bg.poster { background-image: url('assets/screens/Magnetic-Mission.png'); }
+.slide[data-id="break-the-word"]        .slide-bg.poster { background-image: url('assets/screens/break-the-word.png'); }
 .slide[data-id="geography-puzzle-game"] .slide-bg.poster { background-image: url('assets/screens/geography-puzzle-game.png'); }
-.slide[data-id="tap-and-pop"] .slide-bg.poster { background-image: url('assets/screens/tap-and-pop.png'); background-size: cover; }
-.slide[data-id="mini-metro-lesson"] .slide-bg.poster { background-image: url('assets/screens/mini-metro-lesson.png'); }
-.slide[data-id="young-investor"] .slide-bg.poster { background-image: url('assets/screens/young-investor.png'); background-size: 200%; background-position: center 38%; }
+.slide[data-id="tap-and-pop"]           .slide-bg.poster { background-image: url('assets/screens/tap-and-pop.png'); background-size: cover; }
+.slide[data-id="mini-metro-lesson"]     .slide-bg.poster { background-image: url('assets/screens/mini-metro-lesson.png'); }
+.slide[data-id="young-investor"]        .slide-bg.poster { background-image: url('assets/screens/young-investor.png'); background-size: 200%; background-position: center 38%; }
 
 /* =====================================================================
-   FEATURED GAMES SECTION (klei: 3-col grid, 392x245 cards)
+   FEATURED GAMES — klei-tilted cards with hover behavior
    ===================================================================== */
 .featured {
-  margin-top: 72px;
+  margin-top: 110px;
   padding: 80px 28px 60px;
   background: var(--bg);
   text-align: center;
 }
-.featured-head {
-  max-width: 1240px;
-  margin: 0 auto 40px;
-}
+.featured-head { max-width: 1240px; margin: 0 auto 50px; }
 .featured-title {
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 900;
-  font-size: clamp(36px, 5vw, 52px);
+  font-size: clamp(36px, 5vw, 56px);
   letter-spacing: -1px;
   color: var(--ink);
   text-transform: uppercase;
@@ -327,10 +355,9 @@ body {
 .featured-title::after {
   content: '';
   position: absolute;
-  inset-inline-start: 50%;
-  bottom: -10px;
+  inset-inline-start: 50%; bottom: -12px;
   transform: translateX(50%);
-  width: 60%; height: 4px;
+  width: 65%; height: 4px;
   background: var(--orange);
   border-radius: 2px;
 }
@@ -345,54 +372,66 @@ body {
 .featured-grid {
   display: grid;
   grid-template-columns: repeat(3, 392px);
-  gap: 40px 20px;
+  gap: 60px 24px;        /* extra vertical gap to fit tilted cards */
   max-width: 1216px;
   margin: 0 auto;
   justify-content: center;
 }
-@media (max-width: 1280px) {
-  .featured-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 1100px; }
-}
-@media (max-width: 900px) {
-  .featured-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-@media (max-width: 600px) {
-  .featured-grid { grid-template-columns: 1fr; max-width: 420px; }
-  .featured { padding: 60px 16px 40px; }
+@media (max-width: 1280px) { .featured-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 1100px; gap: 60px 20px; } }
+@media (max-width: 900px)  { .featured-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px)  { .featured-grid { grid-template-columns: 1fr; max-width: 420px; gap: 36px; } .featured { padding: 60px 16px 40px; } }
+
+/* OUTER link — no visible style, just spacing for tilt clearance */
+.fcard {
+  display: block;
+  text-decoration: none; color: inherit;
+  padding: 14px 8px;
+  perspective: 800px;
+  cursor: pointer;
 }
 
-.fcard {
+/* INNER tile — has the 16:10 aspect, tilt, frame, and contents */
+.fcard-inner {
   position: relative;
+  aspect-ratio: 16 / 10;
   width: 100%;
-  aspect-ratio: 392 / 245; /* exact klei ratio */
-  border-radius: 6px;
+  border: 3px solid #000;
+  background: var(--bg-darker);
   overflow: hidden;
-  background: var(--bg-dark);
-  text-decoration: none;
-  color: inherit;
-  display: block;
-  cursor: pointer;
-  box-shadow: 0 4px 16px rgba(0,0,0,.4);
-  transition: transform .3s cubic-bezier(.4,0,.2,1), box-shadow .25s;
+  transition: transform .35s cubic-bezier(.34, 1.5, .64, 1), border-color .25s;
+  filter: drop-shadow(0 5px 6px rgba(0,0,0,.7));
+  transform: rotate(-2deg);
 }
+/* tilt pattern matches klei: 1,2,5,6 → -2°; 3,4,7 → +2° */
+.fcard:nth-child(3) .fcard-inner,
+.fcard:nth-child(4) .fcard-inner,
+.fcard:nth-child(7) .fcard-inner { transform: rotate(2deg); }
+
+/* Hover: frame turns WHITE, tile straightens & scales 1.05 */
+.fcard:hover .fcard-inner {
+  border-color: #fff;
+  transform: rotate(0deg) scale(1.05);
+  filter: drop-shadow(0 12px 24px rgba(0,0,0,.85));
+}
+
 .fcard-art {
   position: absolute; inset: 0;
   width: 100%; height: 100%;
   background-size: cover;
   background-position: center;
+  object-fit: cover;
   transition: transform .6s cubic-bezier(.4,0,.2,1), filter .25s;
 }
+video.fcard-art { display: block; }
 .fcard-shade {
   position: absolute; inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,.85) 0%, rgba(0,0,0,.30) 40%, transparent 75%);
+  background: linear-gradient(to top, rgba(0,0,0,.85) 0%, rgba(0,0,0,.30) 38%, transparent 72%);
   transition: opacity .25s;
 }
 .fcard-content {
-  position: absolute;
-  inset: 0;
-  z-index: 2;
+  position: absolute; inset: 0; z-index: 2;
   display: flex; flex-direction: column; justify-content: end;
-  padding: 14px 16px;
+  padding: 16px 18px;
 }
 .fcard-eyebrow {
   font-family: 'Barlow Condensed', sans-serif;
@@ -402,7 +441,7 @@ body {
   text-transform: uppercase;
   color: var(--orange);
   margin-bottom: 4px;
-  text-shadow: 0 2px 6px rgba(0,0,0,.8);
+  text-shadow: 0 2px 6px rgba(0,0,0,.85);
 }
 .fcard-eyebrow.lesson { color: #93c5fd; }
 .fcard-eyebrow.guest  { color: var(--red); }
@@ -412,27 +451,25 @@ body {
   font-size: 22px;
   line-height: 1.05;
   color: var(--ink);
-  text-shadow: 0 2px 12px rgba(0,0,0,.85);
+  text-shadow: 0 2px 12px rgba(0,0,0,.9);
 }
-.fcard:hover { transform: translateY(-6px); box-shadow: 0 22px 40px -10px rgba(0,0,0,.7), 0 0 0 1px var(--orange); }
-.fcard:hover .fcard-art { transform: scale(1.06); }
-.fcard:hover .fcard-shade { opacity: .7; }
+.fcard:hover .fcard-shade { opacity: .65; }
 
-/* per-card backgrounds */
-.fcard[data-id="lions-roar"]            .fcard-art { background-image: url('assets/screens/lions-roar.png'); }
-.fcard[data-id="Magnetic-Mission"]      .fcard-art { background-image: url('assets/screens/Magnetic-Mission.png'); }
-.fcard[data-id="break-the-word"]        .fcard-art { background-image: url('assets/screens/break-the-word.png'); }
-.fcard[data-id="geography-puzzle-game"] .fcard-art { background-image: url('assets/screens/geography-puzzle-game.png'); }
-.fcard[data-id="tap-and-pop"]           .fcard-art { background-image: url('assets/screens/tap-and-pop.png'); background-size: 145%; background-position: center 50%; }
-.fcard[data-id="mini-metro-lesson"]     .fcard-art { background-image: url('assets/screens/mini-metro-lesson.png'); }
-.fcard[data-id="young-investor"]        .fcard-art { background-image: url('assets/screens/young-investor.png'); background-size: 200%; background-position: center 38%; }
+/* per-card art fallbacks (poster) */
+.fcard[data-id="lions-roar"]            .fcard-art.poster { background-image: url('assets/screens/lions-roar.png'); }
+.fcard[data-id="Magnetic-Mission"]      .fcard-art.poster { background-image: url('assets/screens/Magnetic-Mission.png'); }
+.fcard[data-id="break-the-word"]        .fcard-art.poster { background-image: url('assets/screens/break-the-word.png'); }
+.fcard[data-id="geography-puzzle-game"] .fcard-art.poster { background-image: url('assets/screens/geography-puzzle-game.png'); }
+.fcard[data-id="tap-and-pop"]           .fcard-art.poster { background-image: url('assets/screens/tap-and-pop.png'); background-size: cover; }
+.fcard[data-id="mini-metro-lesson"]     .fcard-art.poster { background-image: url('assets/screens/mini-metro-lesson.png'); }
+.fcard[data-id="young-investor"]        .fcard-art.poster { background-image: url('assets/screens/young-investor.png'); background-size: 200%; background-position: center 38%; }
 
 /* =====================================================================
-   MANIFESTO — klei-style "We Publish Games Too" pattern
+   MANIFESTO
    ===================================================================== */
 .manifesto {
   position: relative;
-  margin: 30px auto 60px;
+  margin: 40px auto 60px;
   max-width: 1216px;
   border-radius: 10px;
   overflow: hidden;
@@ -447,14 +484,14 @@ body {
 .manifesto-inner {
   position: relative; z-index: 1;
   display: grid;
-  grid-template-columns: 0.9fr 1.4fr;
+  grid-template-columns: 0.85fr 1.4fr;
   gap: 36px;
   align-items: center;
-  padding: 50px 44px;
+  padding: 56px 48px;
 }
 .manifesto-icon {
   text-align: center;
-  font-size: 110px;
+  font-size: 120px;
   line-height: 1;
   filter: drop-shadow(0 14px 30px rgba(250,204,21,.5));
   animation: bob 4s ease-in-out infinite;
@@ -464,8 +501,9 @@ body {
   50%      { transform: translateY(-10px) rotate(4deg); }
 }
 .manifesto-eyebrow {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-weight: 800;
+  font-size: 12px;
   letter-spacing: 4px;
   color: var(--lemon);
   margin-bottom: 14px;
@@ -474,14 +512,12 @@ body {
 .manifesto-title {
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 900;
-  font-size: clamp(28px, 4.2vw, 46px);
+  font-size: clamp(32px, 4.4vw, 50px);
   letter-spacing: -.5px;
   line-height: 1.05;
   color: var(--ink);
-  margin-bottom: 16px;
+  margin-bottom: 18px;
   text-transform: uppercase;
-  direction: ltr;
-  unicode-bidi: plaintext;
 }
 .manifesto-title .accent {
   color: var(--lemon);
@@ -499,38 +535,57 @@ body {
 .manifesto-text p {
   font-family: 'Open Sans', sans-serif;
   color: var(--ink-soft);
-  font-size: clamp(14px, 1.3vw, 16px);
+  font-size: clamp(15px, 1.35vw, 17px);
   max-width: 600px;
-  opacity: .92;
+  margin-bottom: 12px;
+}
+.manifesto-text p:last-child {
+  font-family: 'Heebo', sans-serif;
+  font-weight: 800;
+  color: var(--lemon);
+  margin-bottom: 0;
 }
 @media (max-width: 720px) {
-  .manifesto-inner { grid-template-columns: 1fr; text-align: center; padding: 36px 24px; gap: 18px; }
-  .manifesto-icon { font-size: 80px; }
+  .manifesto-inner { grid-template-columns: 1fr; text-align: center; padding: 40px 24px; gap: 18px; }
+  .manifesto-icon { font-size: 88px; }
   .manifesto-text p { max-width: none; }
 }
 
 /* =====================================================================
-   FOOTER (klei minimal)
+   FOOTER
    ===================================================================== */
 footer {
   background: var(--bg-darker);
   border-top: 1px solid var(--line);
-  padding: 36px 28px;
+  padding: 40px 32px 36px;
 }
 .footer-inner {
   max-width: 1216px; margin: 0 auto;
   display: flex; align-items: center; justify-content: space-between;
   flex-wrap: wrap; gap: 18px;
 }
-.footer-brand { display: flex; align-items: center; gap: 12px; }
-.footer-brand img { width: 32px; height: 32px; border-radius: 5px; opacity: .85; }
+.footer-brand { display: flex; align-items: center; gap: 16px; }
+.footer-brand img {
+  width: 52px; height: 52px;
+  border-radius: 10px;
+  object-fit: cover;
+  box-shadow: 0 0 0 2px rgba(250,204,21,.25);
+}
+.footer-brand .text { display: flex; flex-direction: column; line-height: 1.2; }
 .footer-brand .name {
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 900;
-  font-size: 15px;
+  font-size: 18px;
   letter-spacing: 2px;
   color: var(--lemon);
   text-transform: uppercase;
+}
+.footer-brand .sub {
+  font-family: 'Heebo', sans-serif;
+  font-weight: 700;
+  font-size: 12px;
+  color: var(--ink-mute);
+  margin-top: 4px;
 }
 .footer-meta {
   font-family: 'Barlow Condensed', sans-serif;
@@ -549,7 +604,10 @@ footer {
 <header class="site-header">
   <a class="brand" href="/">
     <img src="assets/logo.jpg" alt="">
-    <span class="brand-text">Lemons Gaming</span>
+    <span class="brand-text">
+      <span class="name">Lemons Gaming</span>
+      <span class="tag">גיימינג — למידה שהיא חוויה</span>
+    </span>
   </a>
   <ul class="nav-links">
     <li><a href="#featured">Games</a></li>
@@ -570,7 +628,7 @@ footer {
       <div class="slide-content">
         <div class="slide-eyebrow"><span class="dot"></span>NOW PLAYING · ACTION</div>
         <h1 class="slide-title">שאגת הארי</h1>
-        <p class="slide-sub">משימות הפצצה בעורף האויב. 3 שלבים מדבריים, נשק כבד, ניקוד גבוה.</p>
+        <p class="slide-sub">משימות הפצצה בעורף האויב. הלמידה כאן: עבודת צוות, החלטות בלחץ, גיאוגרפיה של שדה קרב.</p>
         <a href="https://lemons-gaming.github.io/lions-roar/" target="_blank" rel="noopener" class="cta-orange" data-game="lions-roar">Play Now <span class="arrow">←</span></a>
       </div>
     </article>
@@ -584,7 +642,7 @@ footer {
       <div class="slide-content">
         <div class="slide-eyebrow"><span class="dot"></span>NEW · PHYSICS · י"ב</div>
         <h1 class="slide-title">המשימה המגנטית</h1>
-        <p class="slide-sub">משחק הרפתקאות סביב ניסוי השדה המגנטי. גלוונומטר, מסע למעמקי כדור הארץ ועוד.</p>
+        <p class="slide-sub">משחק הרפתקאות סביב ניסוי השדה המגנטי. הלמידה כאן: פיזיקה של כיתה י"ב, מתודולוגיית מעבדה.</p>
         <a href="https://lemons-gaming.github.io/Magnetic-Mission/" target="_blank" rel="noopener" class="cta-orange" data-game="Magnetic-Mission">Play Now <span class="arrow">←</span></a>
       </div>
     </article>
@@ -598,7 +656,7 @@ footer {
       <div class="slide-content">
         <div class="slide-eyebrow"><span class="dot"></span>RETRO · READING</div>
         <h1 class="slide-title">שבור את המילה</h1>
-        <p class="slide-sub">משחק רטרו ללימוד קריאה. שובר את הלבנים, חושף את המילה, פותר את החידה.</p>
+        <p class="slide-sub">משחק רטרו ללימוד קריאה. הלמידה כאן: אוריינות, פענוח מילים, ריכוז.</p>
         <a href="https://lemons-gaming.github.io/break-the-word/" target="_blank" rel="noopener" class="cta-orange" data-game="break-the-word">Play Now <span class="arrow">←</span></a>
       </div>
     </article>
@@ -612,7 +670,7 @@ footer {
       <div class="slide-content">
         <div class="slide-eyebrow"><span class="dot"></span>GEOGRAPHY · QUIZ</div>
         <h1 class="slide-title">פאזל גיאוגרפי</h1>
-        <p class="slide-sub">הכירו את מפת העולם. פאזל אינטראקטיבי + חידוני יבשות, מדינות וערים.</p>
+        <p class="slide-sub">פאזל מפת העולם + חידוני יבשות, מדינות וערים. הלמידה כאן: גיאוגרפיה, זיהוי חזותי.</p>
         <a href="https://lemons-gaming.github.io/geography-puzzle-game/" target="_blank" rel="noopener" class="cta-orange" data-game="geography-puzzle-game">Play Now <span class="arrow">←</span></a>
       </div>
     </article>
@@ -626,7 +684,7 @@ footer {
       <div class="slide-content">
         <div class="slide-eyebrow"><span class="dot"></span>REFLEX TRAINER</div>
         <h1 class="slide-title">מצא את הצורה</h1>
-        <p class="slide-sub">צורה אחת מופיעה למטה — מצאו אותה בין הצורות הצפות לפני שהזמן נגמר.</p>
+        <p class="slide-sub">צורה אחת מופיעה למטה — מצאו אותה לפני שנגמר הזמן. הלמידה כאן: זריזות עין-יד, ריכוז.</p>
         <a href="https://lemons-gaming.github.io/tap-and-pop/" target="_blank" rel="noopener" class="cta-orange" data-game="tap-and-pop">Play Now <span class="arrow">←</span></a>
       </div>
     </article>
@@ -640,7 +698,7 @@ footer {
       <div class="slide-content">
         <div class="slide-eyebrow"><span class="dot"></span>LESSON PLAN</div>
         <h1 class="slide-title">Mini Metro</h1>
-        <p class="slide-sub">מערך שיעור אינטראקטיבי — תכנון, אסטרטגיה ויעילות דרך משחק קלאסי.</p>
+        <p class="slide-sub">מערך שיעור אינטראקטיבי. הלמידה כאן: תכנון, אסטרטגיה, יעילות.</p>
         <a href="https://lemons-gaming.github.io/mini-metro-lesson/" target="_blank" rel="noopener" class="cta-orange" data-game="mini-metro-lesson">Open Lesson <span class="arrow">←</span></a>
       </div>
     </article>
@@ -651,7 +709,7 @@ footer {
       <div class="slide-content">
         <div class="slide-eyebrow"><span class="dot"></span>GUEST · liluo.io</div>
         <h1 class="slide-title">המשקיעים הצעירים</h1>
-        <p class="slide-sub">משחק חינוכי על השקעות — אסטרטגיה, ניהול משאבים והכרת השוק לראשונה.</p>
+        <p class="slide-sub">משחק על אסטרטגיה, ניהול משאבים וניתוח שוק. הלמידה כאן: אוריינות פיננסית.</p>
         <a href="https://liluo.io/lemonsgaming/theyounginvestor" target="_blank" rel="noopener" class="cta-orange" data-game="young-investor">Visit <span class="arrow">←</span></a>
       </div>
     </article>
@@ -664,74 +722,100 @@ footer {
   <div class="hero-thumbs" id="heroThumbs"></div>
 </section>
 
-<!-- ───── FEATURED GAMES (klei 3-col 392x245 grid) ───── -->
+<!-- ───── FEATURED GAMES ───── -->
 <section class="featured" id="featured">
   <div class="featured-head">
     <h2 class="featured-title">Featured Games</h2>
     <p class="featured-sub">7 כותרים פעילים · לחיצה אחת בדפדפן</p>
   </div>
-  <div class="featured-grid">
+  <div class="featured-grid" id="featuredGrid">
 
     <a class="fcard" data-id="lions-roar" data-game="lions-roar" href="https://lemons-gaming.github.io/lions-roar/" target="_blank" rel="noopener">
-      <div class="fcard-art"></div>
-      <div class="fcard-shade"></div>
-      <div class="fcard-content">
-        <div class="fcard-eyebrow">Action</div>
-        <div class="fcard-title">שאגת הארי</div>
+      <div class="fcard-inner">
+        <video class="fcard-art" autoplay loop muted playsinline preload="metadata" poster="assets/screens/lions-roar.png">
+          <source src="assets/videos/lions-roar.mp4" type="video/mp4">
+        </video>
+        <div class="fcard-shade"></div>
+        <div class="fcard-content">
+          <div class="fcard-eyebrow">Action · Teamwork</div>
+          <div class="fcard-title">שאגת הארי</div>
+        </div>
       </div>
     </a>
 
     <a class="fcard" data-id="Magnetic-Mission" data-game="Magnetic-Mission" href="https://lemons-gaming.github.io/Magnetic-Mission/" target="_blank" rel="noopener">
-      <div class="fcard-art"></div>
-      <div class="fcard-shade"></div>
-      <div class="fcard-content">
-        <div class="fcard-eyebrow">Physics · י"ב</div>
-        <div class="fcard-title">המשימה המגנטית</div>
+      <div class="fcard-inner">
+        <video class="fcard-art" autoplay loop muted playsinline preload="metadata" poster="assets/screens/Magnetic-Mission.png">
+          <source src="assets/videos/Magnetic-Mission.mp4" type="video/mp4">
+        </video>
+        <div class="fcard-shade"></div>
+        <div class="fcard-content">
+          <div class="fcard-eyebrow">Physics · י"ב</div>
+          <div class="fcard-title">המשימה המגנטית</div>
+        </div>
       </div>
     </a>
 
     <a class="fcard" data-id="break-the-word" data-game="break-the-word" href="https://lemons-gaming.github.io/break-the-word/" target="_blank" rel="noopener">
-      <div class="fcard-art"></div>
-      <div class="fcard-shade"></div>
-      <div class="fcard-content">
-        <div class="fcard-eyebrow">Reading</div>
-        <div class="fcard-title">שבור את המילה</div>
+      <div class="fcard-inner">
+        <video class="fcard-art" autoplay loop muted playsinline preload="metadata" poster="assets/screens/break-the-word.png">
+          <source src="assets/videos/break-the-word.mp4" type="video/mp4">
+        </video>
+        <div class="fcard-shade"></div>
+        <div class="fcard-content">
+          <div class="fcard-eyebrow">Reading · Literacy</div>
+          <div class="fcard-title">שבור את המילה</div>
+        </div>
       </div>
     </a>
 
     <a class="fcard" data-id="geography-puzzle-game" data-game="geography-puzzle-game" href="https://lemons-gaming.github.io/geography-puzzle-game/" target="_blank" rel="noopener">
-      <div class="fcard-art"></div>
-      <div class="fcard-shade"></div>
-      <div class="fcard-content">
-        <div class="fcard-eyebrow">Geography</div>
-        <div class="fcard-title">פאזל גיאוגרפי</div>
+      <div class="fcard-inner">
+        <video class="fcard-art" autoplay loop muted playsinline preload="metadata" poster="assets/screens/geography-puzzle-game.png">
+          <source src="assets/videos/geography-puzzle-game.mp4" type="video/mp4">
+        </video>
+        <div class="fcard-shade"></div>
+        <div class="fcard-content">
+          <div class="fcard-eyebrow">Geography</div>
+          <div class="fcard-title">פאזל גיאוגרפי</div>
+        </div>
       </div>
     </a>
 
     <a class="fcard" data-id="tap-and-pop" data-game="tap-and-pop" href="https://lemons-gaming.github.io/tap-and-pop/" target="_blank" rel="noopener">
-      <div class="fcard-art"></div>
-      <div class="fcard-shade"></div>
-      <div class="fcard-content">
-        <div class="fcard-eyebrow">Reflex</div>
-        <div class="fcard-title">מצא את הצורה</div>
+      <div class="fcard-inner">
+        <video class="fcard-art" autoplay loop muted playsinline preload="metadata" poster="assets/screens/tap-and-pop.png">
+          <source src="assets/videos/tap-and-pop.mp4" type="video/mp4">
+        </video>
+        <div class="fcard-shade"></div>
+        <div class="fcard-content">
+          <div class="fcard-eyebrow">Reflex</div>
+          <div class="fcard-title">מצא את הצורה</div>
+        </div>
       </div>
     </a>
 
     <a class="fcard" data-id="mini-metro-lesson" data-game="mini-metro-lesson" href="https://lemons-gaming.github.io/mini-metro-lesson/" target="_blank" rel="noopener">
-      <div class="fcard-art"></div>
-      <div class="fcard-shade"></div>
-      <div class="fcard-content">
-        <div class="fcard-eyebrow lesson">Lesson Plan</div>
-        <div class="fcard-title">Mini Metro</div>
+      <div class="fcard-inner">
+        <video class="fcard-art" autoplay loop muted playsinline preload="metadata" poster="assets/screens/mini-metro-lesson.png">
+          <source src="assets/videos/mini-metro-lesson.mp4" type="video/mp4">
+        </video>
+        <div class="fcard-shade"></div>
+        <div class="fcard-content">
+          <div class="fcard-eyebrow lesson">Lesson Plan</div>
+          <div class="fcard-title">Mini Metro</div>
+        </div>
       </div>
     </a>
 
     <a class="fcard" data-id="young-investor" data-game="young-investor" href="https://liluo.io/lemonsgaming/theyounginvestor" target="_blank" rel="noopener">
-      <div class="fcard-art"></div>
-      <div class="fcard-shade"></div>
-      <div class="fcard-content">
-        <div class="fcard-eyebrow guest">Guest · liluo.io</div>
-        <div class="fcard-title">המשקיעים הצעירים</div>
+      <div class="fcard-inner">
+        <div class="fcard-art poster"></div>
+        <div class="fcard-shade"></div>
+        <div class="fcard-content">
+          <div class="fcard-eyebrow guest">Guest · Financial Literacy</div>
+          <div class="fcard-title">המשקיעים הצעירים</div>
+        </div>
       </div>
     </a>
 
@@ -745,8 +829,9 @@ footer {
     <div class="manifesto-icon">🍋</div>
     <div class="manifesto-text">
       <div class="manifesto-eyebrow">// Manifesto</div>
-      <h2 class="manifesto-title">Gaming <span class="accent">Is</span> Learning</h2>
-      <p>בין אם מדובר בתוכן לימודי, או במיומנויות מוטוריות, חברתיות או קוגניטיביות — כל משחק הוא בעצם מערכת לימוד מוסווית. ב-Lemons Gaming אנחנו לוקחים את ההסוואה ברצינות.</p>
+      <h2 class="manifesto-title">גיימינג <span class="accent">=</span> למידה</h2>
+      <p>כל משחק הוא בעצם למידה — של אוריינות פיננסית, עבודת צוות, פיזיקה או גיאוגרפיה. תכנון, החלטות תחת לחץ, מיומנויות מוטוריות וקוגניטיביות, חברתיות, רגשיות.</p>
+      <p>גיימינג — למידה שהיא חוויה.</p>
     </div>
   </div>
 </section>
@@ -755,9 +840,12 @@ footer {
   <div class="footer-inner">
     <div class="footer-brand">
       <img src="assets/logo.jpg" alt="">
-      <span class="name">Lemons Gaming</span>
+      <div class="text">
+        <span class="name">Lemons Gaming</span>
+        <span class="sub">גיימינג — למידה שהיא חוויה</span>
+      </div>
     </div>
-    <div class="footer-meta">© 2026 · Made with <span class="heart">🍋</span></div>
+    <div class="footer-meta">© 2026 · Made with <span class="heart">🍋</span> in Israel</div>
   </div>
 </footer>
 
@@ -771,14 +859,12 @@ footer {
     const prevBtn = document.getElementById('heroPrev');
     const nextBtn = document.getElementById('heroNext');
 
-    // Build thumbnail strip from slides
     [...slides].forEach((s, i) => {
       const t = document.createElement('div');
       t.className = 'hero-thumb';
       const id = s.dataset.id;
       t.style.backgroundImage = `url('assets/screens/${id}.png')`;
       if (id === 'young-investor') { t.style.backgroundSize = '200%'; t.style.backgroundPosition = 'center 38%'; }
-      if (id === 'tap-and-pop')    { t.style.backgroundSize = '145%'; }
       t.addEventListener('click', () => go(i, true));
       thumbs.appendChild(t);
     });
@@ -789,9 +875,8 @@ footer {
       cur = (idx + total) % total;
       track.style.transform = `translateX(${-cur * (100/total)}%)`;
       [...thumbs.children].forEach((t, j) => t.classList.toggle('active', j === cur));
-      // pause all videos except current
       [...slides].forEach((s, j) => {
-        const v = s.querySelector('video');
+        const v = s.querySelector('video.slide-bg');
         if (!v) return;
         if (j === cur) v.play().catch(()=>{});
         else { v.pause(); try { v.currentTime = 0; } catch(_) {} }
@@ -808,7 +893,7 @@ footer {
     prevBtn.addEventListener('click', () => go(cur - 1, true));
     nextBtn.addEventListener('click', () => go(cur + 1, true));
     document.addEventListener('keydown', e => {
-      if (e.key === 'ArrowRight') go(cur - 1, true); // RTL: right = previous
+      if (e.key === 'ArrowRight') go(cur - 1, true);
       if (e.key === 'ArrowLeft')  go(cur + 1, true);
     });
     document.addEventListener('visibilitychange', () => {
@@ -817,10 +902,10 @@ footer {
         document.querySelectorAll('video').forEach(v => v.pause());
       } else {
         restart();
-        const v = slides[cur].querySelector('video'); if (v) v.play().catch(()=>{});
+        const v = slides[cur].querySelector('video.slide-bg'); if (v) v.play().catch(()=>{});
+        document.querySelectorAll('video.fcard-art').forEach(v => v.play().catch(()=>{}));
       }
     });
-    // init
     go(0, false);
   })();
 
