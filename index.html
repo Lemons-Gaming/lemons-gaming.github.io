@@ -303,10 +303,10 @@ body {
   transition: all .25s cubic-bezier(.4, 0, .2, 1);
   position: relative;
   flex: 0 0 auto;
-  filter: url(#torn-edge) drop-shadow(0 3px 4px rgba(0,0,0,.6));   /* match the big cards */
+  filter: url(#torn-edge-sm) drop-shadow(0 3px 4px rgba(0,0,0,.6));   /* smaller torn variant for tiny thumbs */
 }
 .hero-thumb:hover, .hero-thumb.active {
-  filter: url(#torn-edge) drop-shadow(0 6px 10px rgba(0,0,0,.7));
+  filter: url(#torn-edge-sm) drop-shadow(0 6px 10px rgba(0,0,0,.7));
 }
 .hero-thumb::after {
   content: '';
@@ -608,12 +608,16 @@ footer {
 </head>
 <body>
 
-<!-- SVG filter that creates the klei-style torn / displaced edge on cards -->
+<!-- SVG filters: klei-style torn / displaced edges (big cards + small thumbs) -->
 <svg width="0" height="0" style="position:absolute;pointer-events:none;" aria-hidden="true">
   <defs>
     <filter id="torn-edge" x="-5%" y="-5%" width="110%" height="110%">
       <feTurbulence type="fractalNoise" baseFrequency="0.022 0.04" numOctaves="2" seed="7" stitchTiles="stitch" result="noise" />
       <feDisplacementMap in="SourceGraphic" in2="noise" scale="9" xChannelSelector="R" yChannelSelector="G" />
+    </filter>
+    <filter id="torn-edge-sm" x="-6%" y="-6%" width="112%" height="112%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.06 0.1" numOctaves="2" seed="3" stitchTiles="stitch" result="noise" />
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G" />
     </filter>
   </defs>
 </svg>
