@@ -158,14 +158,40 @@ body {
    HERO CAROUSEL
    ===================================================================== */
 .hero {
-  position: relative;
-  top: 110px;
-  height: calc(100vh - 110px);
-  min-height: 580px;
-  max-height: 820px;
-  overflow: hidden;
-  background: var(--bg-darker);
+  margin-top: 110px;            /* clear the fixed header */
+  padding: 52px 28px 44px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  background:
+    radial-gradient(ellipse 72% 62% at 50% 28%, rgba(250,204,21,.10), transparent 70%),
+    var(--bg-darker);
   direction: ltr;
+}
+/* Decorative outer frame (passe-partout / mat) — lemon frame + warm mat gap */
+.hero-mat {
+  position: relative;
+  width: min(860px, 94vw);
+  padding: 15px;                                     /* the mat gap */
+  background: linear-gradient(135deg, #2c2118 0%, #1b1512 100%);
+  border: 5px solid var(--lemon);
+  border-radius: 6px;
+  box-shadow:
+    inset 0 0 0 1px rgba(0,0,0,.55),                 /* keyline between mat & frame */
+    inset 1px 1px 0 rgba(255,255,255,.18),           /* frame top highlight */
+    inset -1px -1px 0 rgba(0,0,0,.45),               /* frame bottom shade */
+    0 20px 44px rgba(0,0,0,.55);                     /* depth drop shadow */
+}
+/* Centered, framed showcase — torn-edge black inner frame (matches #featured) */
+.hero-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 6px solid #000;
+  background: var(--bg-darker);
+  overflow: hidden;
+  filter: url(#torn-edge) drop-shadow(0 6px 12px rgba(0,0,0,.6));
 }
 .hero-track {
   display: flex;
@@ -197,17 +223,17 @@ body {
   position: absolute; inset: 0; z-index: 2;
   display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
   text-align: center;
-  padding: 0 32px 160px;
+  padding: 28px 26px 26px;
   direction: rtl;
 }
 .slide-eyebrow {
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 800;
-  font-size: 14px;
-  letter-spacing: 5px;
+  font-size: 12px;
+  letter-spacing: 4px;
   color: var(--red);
   text-transform: uppercase;
-  margin-bottom: 14px;
+  margin-bottom: 10px;
   text-shadow: 0 2px 8px rgba(0,0,0,.6);
 }
 .slide-eyebrow .dot {
@@ -227,20 +253,20 @@ body {
 .slide-title {
   font-family: 'Heebo', 'Barlow Condensed', sans-serif;
   font-weight: 900;
-  font-size: clamp(48px, 7vw, 92px);
-  line-height: .95;
-  letter-spacing: -2px;
+  font-size: clamp(26px, 4vw, 50px);
+  line-height: .98;
+  letter-spacing: -1px;
   color: #fff;
-  margin-bottom: 18px;
+  margin-bottom: 12px;
   text-shadow: 0 4px 24px rgba(0,0,0,.7);
   text-transform: uppercase;
 }
 .slide-sub {
   font-family: 'Open Sans', sans-serif;
-  font-size: clamp(15px, 1.4vw, 17px);
+  font-size: clamp(13px, 1.3vw, 15px);
   color: var(--ink-soft);
-  max-width: 560px;
-  margin-bottom: 26px;
+  max-width: 440px;
+  margin-bottom: 18px;
   text-shadow: 0 2px 12px rgba(0,0,0,.7);
 }
 .cta-orange {
@@ -287,15 +313,12 @@ body {
 
 /* KLEI-STYLE THUMB STRIP — arrows now sit INSIDE this row, flanking the thumbs */
 .hero-thumbs {
-  position: absolute;
-  bottom: 0; left: 50%;
-  transform: translateX(-50%);
+  position: relative;
   z-index: 6;
-  width: min(820px, 96vw);
-  height: 96px;
+  width: min(860px, 94vw);
   display: flex; gap: 14px;
   align-items: center; justify-content: center;
-  padding: 12px 0;
+  padding: 0;
   direction: ltr;
 }
 .hero-thumbs-inner {
@@ -336,7 +359,16 @@ body {
 .hero-thumb.active::after { opacity: 0; }
 @media (max-width: 700px) {
   .hero-thumb { width: 56px; height: 36px; border-width: 2px; }
-  .hero-thumbs { height: 76px; }
+}
+@media (max-width: 640px) {
+  .hero { padding: 32px 16px 30px; gap: 22px; }
+  .hero-mat { padding: 9px; border-width: 3px; }
+  .hero-frame { border-width: 4px; }
+  .slide-content { padding: 18px 18px; }
+  .slide-eyebrow { font-size: 10px; letter-spacing: 3px; margin-bottom: 7px; }
+  .slide-title { font-size: clamp(22px, 6.5vw, 34px); margin-bottom: 8px; }
+  .slide-sub { display: none; }
+  .cta-orange { padding: 9px 18px; font-size: 12px; }
 }
 
 /* Per-slide bg image (poster fallback) */
@@ -672,6 +704,8 @@ footer {
 
 <!-- ───── HERO CAROUSEL ─────────────────────────────────────── -->
 <section class="hero" id="hero">
+  <div class="hero-mat">
+  <div class="hero-frame">
   <div class="hero-track" id="heroTrack">
 
     <article class="slide" data-id="lions-roar">
@@ -770,6 +804,8 @@ footer {
     </article>
 
   </div>
+  </div><!-- /hero-frame -->
+  </div><!-- /hero-mat -->
 
   <div class="hero-thumbs">
     <button class="hero-arrow prev" id="heroPrev" aria-label="Previous">
