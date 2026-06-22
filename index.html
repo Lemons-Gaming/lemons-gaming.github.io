@@ -989,9 +989,23 @@ footer {
 </footer>
 
 <script>
+  // Fisher–Yates: randomly reorder an element's children in place.
+  function shuffleChildren(parent) {
+    if (!parent) return;
+    const kids = [...parent.children];
+    for (let i = kids.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [kids[i], kids[j]] = [kids[j], kids[i]];
+    }
+    kids.forEach(k => parent.appendChild(k));
+  }
+
   // ────── HERO CAROUSEL ──────
   (function () {
     const track   = document.getElementById('heroTrack');
+    // Randomize the game order on every load — hero opens on a different
+    // game each time; the thumb strip below is built from this order.
+    shuffleChildren(track);
     const slides  = track.children;
     const total   = slides.length;
     const thumbs  = document.getElementById('heroThumbs');
@@ -1047,6 +1061,9 @@ footer {
     });
     go(0, false);
   })();
+
+  // ────── Shuffle the featured grid order on every load ──────
+  shuffleChildren(document.getElementById('featuredGrid'));
 
   // ────── GA4 click tracking ──────
   document.querySelectorAll('.fcard[data-game], .cta-orange[data-game]').forEach(el => {
