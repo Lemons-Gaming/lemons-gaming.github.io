@@ -202,13 +202,13 @@ body {
 }
 .hero-track {
   display: flex;
-  width: 700%;
+  width: 800%;
   height: 100%;
   transition: transform .7s cubic-bezier(.4, 0, .2, 1);
 }
 .slide {
   position: relative;
-  width: calc(100% / 7);
+  width: calc(100% / 8);
   height: 100%;
   overflow: hidden;
 }
@@ -379,6 +379,7 @@ body {
 }
 
 /* Per-slide bg image (poster fallback) */
+.slide[data-id="torah-2048"]            .slide-bg.poster { background-image: url('assets/screens/torah-2048.png'); }
 .slide[data-id="lions-roar"]            .slide-bg.poster { background-image: url('assets/screens/lions-roar.png'); }
 .slide[data-id="Magnetic-Mission"]      .slide-bg.poster { background-image: url('assets/screens/Magnetic-Mission.png'); }
 .slide[data-id="break-the-word"]        .slide-bg.poster { background-image: url('assets/screens/break-the-word.png'); }
@@ -519,6 +520,7 @@ video.fcard-art { display: block; }
 .fcard:hover .fcard-shade { opacity: .65; }
 
 /* per-card art fallbacks (poster) */
+.fcard[data-id="torah-2048"]            .fcard-art.poster { background-image: url('assets/screens/torah-2048.png'); }
 .fcard[data-id="lions-roar"]            .fcard-art.poster { background-image: url('assets/screens/lions-roar.png'); }
 .fcard[data-id="Magnetic-Mission"]      .fcard-art.poster { background-image: url('assets/screens/Magnetic-Mission.png'); }
 .fcard[data-id="break-the-word"]        .fcard-art.poster { background-image: url('assets/screens/break-the-word.png'); }
@@ -715,6 +717,20 @@ footer {
   <div class="hero-frame">
   <div class="hero-track" id="heroTrack">
 
+    <article class="slide" data-id="torah-2048">
+      <video class="slide-bg" autoplay loop muted playsinline preload="metadata" poster="assets/screens/torah-2048.png">
+        <source src="assets/videos/torah-2048.mp4" type="video/mp4">
+      </video>
+      <div class="slide-bg poster"></div>
+      <div class="slide-shade"></div>
+      <div class="slide-content">
+        <div class="slide-eyebrow"><span class="dot"></span>NEW · TORAH · PUZZLE</div>
+        <h1 class="slide-title">פרשות השבוע · 2048</h1>
+        <p class="slide-sub">משחק 2048 שבו האריחים הם פרשות התורה — אחדו פרשות זהות והתקדמו לאורך חמשת החומשים.</p>
+        <a href="https://lemons-gaming.github.io/torah-2048/" target="_blank" rel="noopener" class="cta-orange" data-game="torah-2048">Play Now <span class="arrow">←</span></a>
+      </div>
+    </article>
+
     <article class="slide" data-id="lions-roar">
       <video class="slide-bg" autoplay loop muted playsinline preload="metadata" poster="assets/screens/lions-roar.png">
         <source src="assets/videos/lions-roar.mp4" type="video/mp4">
@@ -836,6 +852,19 @@ footer {
     <p class="featured-sub">פיזיקה<span class="q">?</span> עברית<span class="q">?</span> פיננסים<span class="q">?</span> חשיבה אלגוריתמית<span class="q">?</span> או שסתם תרצו להפציץ<span class="q">?</span></p>
   </div>
   <div class="featured-grid" id="featuredGrid">
+
+    <a class="fcard" data-id="torah-2048" data-game="torah-2048" href="https://lemons-gaming.github.io/torah-2048/" target="_blank" rel="noopener">
+      <div class="fcard-inner">
+        <video class="fcard-art" autoplay loop muted playsinline preload="metadata" poster="assets/screens/torah-2048.png">
+          <source src="assets/videos/torah-2048.mp4" type="video/mp4">
+        </video>
+        <div class="fcard-shade"></div>
+        <div class="fcard-content">
+          <div class="fcard-eyebrow">Torah · Puzzle</div>
+          <div class="fcard-title">פרשות השבוע · 2048</div>
+        </div>
+      </div>
+    </a>
 
     <a class="fcard" data-id="lions-roar" data-game="lions-roar" href="https://lemons-gaming.github.io/lions-roar/" target="_blank" rel="noopener">
       <div class="fcard-inner">
